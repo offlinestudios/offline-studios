@@ -1,0 +1,74 @@
+/* 
+ * Mobile Hero Badge Hotfix - V6.12
+ * 
+ * Purpose: Fix badge overlap on mobile - ensure distinct vertical positions
+ * 
+ * ROOT CAUSE IDENTIFIED:
+ * - badge-tl and badge-tr both at top: 6% causes same vertical level
+ * - On narrow screens (375px-390px), badges appear stacked/overlapping
+ * - User screenshot shows "Hair Salons" and "Law Firms" text in same badge
+ * 
+ * Solution:
+ * - Give each badge distinct vertical position with generous spacing
+ * - badge-tl: top 8% (Dentists)
+ * - badge-tr: top 28% (Law Firms) - moved down significantly  
+ * - badge-bl: bottom 8% (Hair Salons)
+ * - Increase hero height to 600px for more vertical space
+ * - Reduce badge size to 64px for tighter footprint
+ */
+
+@media (max-width: 768px) {
+  /* More vertical space for badge separation */
+  .hero-visual { 
+    min-height: 600px !important; 
+    height: auto !important; 
+  }
+
+  /* Smaller +112% card on mobile */
+  .stat-card.stat-card-main {
+    padding: 16px !important;
+    max-width: 240px !important;
+  }
+  
+  .stat-card.stat-card-main .stat-number { 
+    font-size: 1.75rem !important; 
+  }
+  
+  .stat-card.stat-card-main .stat-label { 
+    font-size: 0.8rem !important; 
+  }
+
+  /* Smaller badges - no transform conflicts */
+  .stat-badge {
+    width: 64px !important;
+    height: 64px !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  .stat-badge svg { 
+    width: 16px !important; 
+    height: 16px !important; 
+  }
+  
+  .stat-badge span { 
+    font-size: 9px !important; 
+    line-height: 1.1 !important;
+  }
+
+  /* CRITICAL FIX: Distinct vertical positions to prevent overlap */
+  .badge-tl { 
+    top: 8% !important; 
+    left: 6% !important; 
+  }
+  
+  .badge-tr { 
+    top: 28% !important;  /* Moved down from 6% to create vertical separation */
+    right: 6% !important; 
+  }
+  
+  .badge-bl { 
+    bottom: 8% !important; 
+    left: 6% !important; 
+  }
+}

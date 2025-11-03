@@ -198,3 +198,85 @@
 - [x] Keep only 3 badges: Dentists, Law Firms, Hair Salons
 - [x] Verify spacing is perfect with 3 badges
 - [x] Test on desktop and mobile
+
+## V6.8 - Mobile Badge Overlap & Container Width Fixes
+
+### Mobile Badge Issues
+- [x] Fix "Hair Salons" text overlapping "Law Firms" badge
+- [x] Fixed portfolio order (was backwards again)
+- [x] Added mobile-specific badge positioning
+- [x] Scaled badges to 70% on mobile
+- [x] Spread badges out with 5% margins
+- [x] Moved Hair Salons badge down (bottom: 60%)
+- [x] Reduced hero height to 400px on mobile
+
+### Mobile Container Width Issues
+- [x] Ensure all containers are proportional to screen size on mobile
+- [x] Reduced container padding on mobile
+- [x] Set max-width: 100% for all containers
+- [x] Added overflow-x: hidden to prevent horizontal scroll
+- [x] Set width: 100% for all grid containers
+
+## V6.9 - Fix Mobile Badge Collision
+
+### Root Cause
+- [x] bottom: 60% on 400px container = 160px from bottom = overlaps with top: 5% (20px from top)
+- [x] badge-tl and badge-bl rendering in same position on mobile
+- [x] "Hair Salons" and "Law Firms" text overlapping in one circle
+
+### Solution
+- [x] Increase hero height to 520px on mobile (more room)
+- [x] Change badge-bl from bottom: 60% to bottom: 14%
+- [x] Adjust all badge positions for proper spacing (6% margins)
+- [x] Verify no overlap - all 3 badges now clearly separated
+
+## V6.10 - Fix Conflicting CSS Rules on Mobile
+
+### Issue 1: Conflicting Hero Heights
+- [x] Line ~906: .hero-visual { height: 520px; }
+- [x] Line ~1017: .hero-visual { height: 350px; } (REMOVED)
+- [x] Result: Now only one height rule (520px)
+- [x] Solution: Removed duplicate, kept only 520px
+
+### Issue 2: Transform vs Animation Conflict
+- [x] Mobile sets: transform: scale(0.7) (REPLACED)
+- [x] Animation sets: transform: translateY(...) (DISABLED)
+- [x] Solution: Set explicit width/height (72px) + animation: none
+- [x] Result: Badges now correct size without animation conflicts
+
+## V6.11 - Mobile Hero Badge Hotfix
+
+### Issue: Tight Clearance Around Center Card
+- [x] +112% card still large on mobile (padding + fonts)
+- [x] badge-bl at bottom: 14% can drift into card on shorter phones
+- [x] Current positions too aggressive for smaller heights
+
+### Hotfix Solution
+- [x] Increase hero min-height to 580px (more breathing room)
+- [x] Shrink +112% card on mobile (smaller padding, fonts)
+- [x] Move badges to safer positions (badge-bl to bottom: 6%)
+- [x] Reduce badge size to 68px for better fit
+- [x] Shrink badge icons and text
+- [x] Created hotfix-hero-badges.css file
+- [x] Added hotfix CSS to index.html
+
+## V6.12 - Fixed Badge Overlap on Mobile ✓
+
+### Issue: Hair Salons and Law Firms Text Overlapping in Same Badge
+- [x] Screenshot showed two text labels in one badge
+- [x] "Hair Salons" and "Law Firms" stacked on top of each other
+- [x] V6.11 hotfix not preventing the overlap
+
+### Root Cause Identified:
+- [x] badge-tl and badge-tr both at top: 6% in styles.css
+- [x] Same vertical position caused overlap on narrow screens (375px-390px)
+- [x] Hotfix CSS had different values but main CSS had conflicting rules
+
+### Solution Applied:
+- [x] Updated hotfix-hero-badges.css with distinct vertical positions
+- [x] badge-tl (Dentists): top: 8%
+- [x] badge-tr (Law Firms): top: 28% (moved down significantly from 6%)
+- [x] badge-bl (Hair Salons): bottom: 8%
+- [x] Increased hero height to 600px for more vertical space
+- [x] Reduced badge size to 64px for tighter footprint
+- [x] All badges now have generous vertical separation

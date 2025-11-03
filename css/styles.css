@@ -872,21 +872,59 @@ section {
     gap: var(--spacing-lg); 
   }
   
-    .portfolio-grid .portfolio-preview,
-  .portfolio-grid-reverse .portfolio-preview { order: 1 !important; }
-
-  .portfolio-grid .portfolio-content,
-  .portfolio-grid-reverse .portfolio-content { order: 2 !important; }
+    .portfolio-grid .portfolio-content,
+  .portfolio-grid-reverse .portfolio-content { order: 1 !important; }
+  
+  .portfolio-grid .portfolio-preview,
+  .portfolio-grid-reverse .portfolio-preview { order: 2 !important; }
 
   
-  /* Show floating badges on mobile with scaling */
+  /* Show floating badges on mobile - disable animation to prevent transform conflict */
   .stat-badge { 
     display: flex; 
-    transform: scale(0.8); 
+    width: 72px;      /* Explicit size instead of scale */
+    height: 72px;     /* Was 96px desktop */
+    animation: none;  /* Prevents transform: translateY() from overriding scale */
   }
   
-  .stat-badge.stat-badge-small { 
-    transform: scale(0.7); 
+  /* Mobile badge positioning - non-overlapping positions */
+  .badge-tl { 
+    top: 6% !important; 
+    left: 6% !important; 
+  }
+  
+  .badge-tr { 
+    top: 6% !important; 
+    right: 6% !important; 
+  }
+  
+  .badge-bl { 
+    bottom: 14% !important; /* Fixed: was 60% which caused overlap */
+    left: 6% !important; 
+  }
+  
+  /* Increase hero height on mobile for badge spacing */
+  .hero-visual {
+    height: 520px; /* Increased from 400px to prevent badge collision */
+  }
+  
+  /* Ensure all containers fit mobile screen */
+  .container {
+    padding: 0 var(--spacing-md); /* Reduce padding on mobile */
+    max-width: 100%;
+  }
+  
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+  
+  .hero-grid,
+  .services-grid,
+  .portfolio-grid,
+  .process-grid {
+    width: 100%;
+    max-width: 100%;
   }
 
     /* Hide desktop CTA, show mobile menu button */
@@ -976,10 +1014,7 @@ section {
         height: 300px;
     }
     
-    /* Hero visual optimization for mobile */
-    .hero-visual {
-        height: 350px;
-    }
+    /* Hero visual height set above at line ~906 (520px) - removed duplicate */
     
     /* Show floating badges on mobile with scaling */
     

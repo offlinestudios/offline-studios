@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Mobile Badge Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hotfix-hero-badges.css">
+    <style>
+        body { margin: 0; padding: 20px; background: #f5f5f5; }
+        .debug-info { background: white; padding: 10px; margin: 10px 0; font-family: monospace; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <strong>Mobile Badge Position Test - V6.12</strong><br>
+        Viewport: <span id="viewport"></span><br>
+        Screen: <span id="screen"></span>
+    </div>
+    
+    <div class="hero-visual" style="position: relative; background: #e0e0e0; margin: 20px 0;">
+        <div class="stats-container">
+            <div class="stat-card stat-card-main">
+                <div class="stat-number">+112%</div>
+                <div class="stat-label">Visibility</div>
+            </div>
+            <div class="stat-badge badge-tl">
+                <span>Dentists</span>
+            </div>
+            <div class="stat-badge badge-tr">
+                <span>Law Firms</span>
+            </div>
+            <div class="stat-badge badge-bl">
+                <span>Hair Salons</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="debug-info" id="badge-positions"></div>
+    
+    <script>
+        function updateDebug() {
+            document.getElementById('viewport').textContent = window.innerWidth + 'x' + window.innerHeight;
+            document.getElementById('screen').textContent = screen.width + 'x' + screen.height;
+            
+            const badges = document.querySelectorAll('.stat-badge');
+            let html = '<strong>Badge Positions:</strong><br>';
+            badges.forEach(badge => {
+                const rect = badge.getBoundingClientRect();
+                const styles = getComputedStyle(badge);
+                const text = badge.querySelector('span')?.textContent || 'unknown';
+                html += `${text}: top=${styles.top}, left=${styles.left}, right=${styles.right}, bottom=${styles.bottom}<br>`;
+                html += `  → screen position: x=${Math.round(rect.x)}, y=${Math.round(rect.y)}, w=${Math.round(rect.width)}, h=${Math.round(rect.height)}<br>`;
+            });
+            document.getElementById('badge-positions').innerHTML = html;
+        }
+        
+        updateDebug();
+        window.addEventListener('resize', updateDebug);
+    </script>
+</body>
+</html>
