@@ -300,3 +300,19 @@
 - [x] Added z-index: 30 to all badges (above card's z-index: 20)
 - [x] All three badges now clearly visible on mobile
 - [x] Tested on desktop viewport - all badges visible
+
+## V6.13.1 - Fixed height:auto Bug (Root Cause) ✓
+
+### Root Cause Identified by User:
+- [x] .hero-visual had `height: auto` in mobile CSS
+- [x] Percentage-based positioning (top: 15%, bottom: 10%) requires definite height
+- [x] When height is auto, browser can't resolve percentage values correctly
+- [x] This caused badges to drift/misposition (Law Firms badge invisible)
+
+### Solution Applied:
+- [x] Replaced `height: auto` with definite height (620px)
+- [x] Set .stats-container to height: 100%
+- [x] Used conservative badge positions (top: 8%, 12%, bottom: 8%)
+- [x] Kept badge size at 68px
+- [x] Tested on desktop viewport - all badges visible
+- [x] Hero height shows 946px (desktop) - will be 620px on mobile

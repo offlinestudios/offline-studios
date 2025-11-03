@@ -1,76 +1,76 @@
 /* 
- * Mobile Hero Badge Hotfix - V6.13
+ * Mobile Hero Badge Hotfix - V6.13.1
  * 
- * Purpose: Fix Law Firms badge invisibility + ensure all badges visible
+ * ROOT CAUSE (identified by user):
+ * - .hero-visual had height: auto on mobile
+ * - Percentage-based positioning (top: 15%, bottom: 10%) requires DEFINITE height
+ * - With height: auto, browser cannot resolve percentage values correctly
+ * - This caused Law Firms badge to drift/misposition and become invisible
  * 
- * V6.12 ISSUE:
- * - Law Firms badge at top: 28% was invisible on mobile
- * - Likely positioned too far down or behind +112% card
- * - User screenshot shows only Hair Salons and Dentists visible
- * 
- * V6.13 Solution:
- * - Use smaller top percentages for all badges (keep them in upper area)
- * - badge-tl (Dentists): top 10%, left 8%
- * - badge-tr (Law Firms): top 15%, right 8% (visible in top-right)
- * - badge-bl (Hair Salons): bottom 10%, left 8%
- * - Increase z-index on badges to ensure they're above card
- * - Keep hero height at 600px for spacing
+ * FIX:
+ * - Use definite height (620px) instead of height: auto
+ * - Set .stats-container to height: 100% for proper containment
+ * - Use conservative badge positions that work reliably
+ * - Keep badges small (68px) with proper z-index
  */
 
 @media (max-width: 768px) {
-  /* More vertical space for badge separation */
-  .hero-visual { 
-    min-height: 600px !important; 
-    height: auto !important; 
+  /* 1) CRITICAL: Definite height makes percentage positions reliable */
+  .hero-visual {
+    height: 620px !important;        /* definite height - NOT auto */
+    min-height: 620px !important;
+  }
+  
+  .stats-container { 
+    height: 100% !important; 
   }
 
-  /* Smaller +112% card on mobile */
+  /* 2) Keep the +112% card compact */
   .stat-card.stat-card-main {
-    padding: 16px !important;
-    max-width: 240px !important;
-    z-index: 20 !important; /* Below badges */
+    padding: 14px !important;
+    max-width: 260px !important;
   }
   
   .stat-card.stat-card-main .stat-number { 
-    font-size: 1.75rem !important; 
+    font-size: 1.8rem !important; 
   }
   
   .stat-card.stat-card-main .stat-label { 
     font-size: 0.8rem !important; 
   }
 
-  /* Smaller badges - no transform conflicts */
+  /* 3) Small, non-animated badges */
   .stat-badge {
-    width: 64px !important;
-    height: 64px !important;
-    animation: none !important;
+    width: 68px !important;
+    height: 68px !important;
     transform: none !important;
-    z-index: 30 !important; /* Above card */
+    animation: none !important;
+    z-index: 20 !important;
   }
   
   .stat-badge svg { 
-    width: 16px !important; 
-    height: 16px !important; 
+    width: 18px !important; 
+    height: 18px !important; 
   }
   
   .stat-badge span { 
-    font-size: 9px !important; 
+    font-size: 10px !important; 
     line-height: 1.1 !important;
   }
 
-  /* CRITICAL FIX: All badges in upper area, clearly visible */
+  /* 4) Safe mobile positions - now work correctly with definite height */
   .badge-tl { 
-    top: 10% !important; 
-    left: 8% !important; 
+    top: 8% !important; 
+    left: 6% !important; 
   }
   
   .badge-tr { 
-    top: 15% !important;  /* Slightly lower than left badge, but still in top area */
-    right: 8% !important; 
+    top: 12% !important;  /* slightly lower than left badge */
+    right: 6% !important; 
   }
   
   .badge-bl { 
-    bottom: 10% !important; 
-    left: 8% !important; 
+    bottom: 8% !important; 
+    left: 6% !important; 
   }
 }
