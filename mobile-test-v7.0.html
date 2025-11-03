@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>V7.0 Mobile Test - Growth Chart</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/growth-chart.css">
+    <style>
+        body { margin: 0; padding: 20px; background: #f5f5f5; font-family: Arial; }
+        .debug-info { background: white; padding: 10px; margin: 10px 0; font-family: monospace; font-size: 11px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <strong>V7.0 Mobile Chart Test</strong><br>
+        Viewport: <span id="viewport"></span><br>
+        Test: Interactive bar graph with hover tooltips
+    </div>
+    
+    <div class="hero-visual" style="padding: 20px 0;">
+        <div class="growth-chart">
+            <div class="chart-header">
+                <h3 class="chart-title">Visibility Growth</h3>
+                <div class="chart-result">+112%</div>
+            </div>
+            <div class="chart-bars">
+                <div class="bar-item" data-month="Month 1" data-value="100">
+                    <div class="bar" style="--height: 47%"></div>
+                    <span class="bar-label">M1</span>
+                </div>
+                <div class="bar-item" data-month="Month 2" data-value="120">
+                    <div class="bar" style="--height: 57%"></div>
+                    <span class="bar-label">M2</span>
+                </div>
+                <div class="bar-item" data-month="Month 3" data-value="145">
+                    <div class="bar" style="--height: 68%"></div>
+                    <span class="bar-label">M3</span>
+                </div>
+                <div class="bar-item" data-month="Month 4" data-value="170">
+                    <div class="bar" style="--height: 80%"></div>
+                    <span class="bar-label">M4</span>
+                </div>
+                <div class="bar-item" data-month="Month 5" data-value="190">
+                    <div class="bar" style="--height: 90%"></div>
+                    <span class="bar-label">M5</span>
+                </div>
+                <div class="bar-item" data-month="Month 6" data-value="212">
+                    <div class="bar" style="--height: 100%"></div>
+                    <span class="bar-label">M6</span>
+                </div>
+            </div>
+            <div class="chart-baseline">
+                <span>Baseline</span>
+                <span>+112%</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="debug-info">
+        ✓ Bars should be visible<br>
+        ✓ Bars should animate on load<br>
+        ✓ Hover/tap should show percentage tooltip<br>
+        ✓ Chart should fit mobile width
+    </div>
+    
+    <script>
+        document.getElementById('viewport').textContent = window.innerWidth + 'x' + window.innerHeight;
+        window.addEventListener('resize', () => {
+            document.getElementById('viewport').textContent = window.innerWidth + 'x' + window.innerHeight;
+        });
+    </script>
+</body>
+</html>
