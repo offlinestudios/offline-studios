@@ -33,7 +33,7 @@
 .chart-result {
   font-size: 2rem;
   font-weight: 900;
-  color: #E50019;
+  color: #DC143C;
   letter-spacing: -0.02em;
 }
 
@@ -61,20 +61,20 @@
 }
 
 .bar-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
 }
 
 .bar {
   width: 100%;
   min-height: 20px;
   height: var(--height);
-  background: linear-gradient(180deg, #E50019 0%, #B00014 100%);
+  background: linear-gradient(180deg, #FCA5A5 0%, #DC143C 100%);
   border-radius: 8px 8px 4px 4px;
   position: relative;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   animation: growBar 1.2s ease-out forwards;
   transform-origin: bottom;
-  box-shadow: 0 2px 8px rgba(229, 0, 25, 0.2);
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.2);
 }
 
 @keyframes growBar {
@@ -96,8 +96,9 @@
 .bar-item:nth-child(6) .bar { animation-delay: 0.5s; }
 
 .bar-item:hover .bar {
-  background: linear-gradient(180deg, #FF1A2E 0%, #C00016 100%);
-  box-shadow: 0 4px 12px rgba(229, 0, 25, 0.3);
+  background: linear-gradient(180deg, #FEE2E2 0%, #DC143C 100%);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
 }
 
 .bar-label {
@@ -165,15 +166,16 @@
 }
 
 .chart-baseline span:last-child {
-  color: #E50019;
+  color: #DC143C;
   font-weight: 700;
 }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
   .growth-chart {
-    padding: 24px 20px;
+    padding: 20px 16px;
     max-width: 100%;
+    margin-bottom: 0;
   }
   
   .chart-header {

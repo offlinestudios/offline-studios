@@ -964,7 +964,11 @@ section {
     
     .hero-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
+        gap: var(--spacing-md);
+    }
+    
+    .hero {
+        padding: calc(var(--spacing-2xl) + 60px) 0 var(--spacing-lg);
     }
     
     .hero-title {

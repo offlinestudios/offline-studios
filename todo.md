@@ -345,3 +345,24 @@
 - [x] Graph centered in hero section with proper spacing
 - [x] Tested hover interaction - tooltips working
 - [x] Chart header shows "Visibility Growth" and "+112%"
+
+
+## V7.1 - Chart Improvements (User Feedback) ✓
+
+### Issues Fixed:
+- [x] Too large gap on mobile between chart and "Everything you need" section
+- [x] Change bar color to pink/off-red used in service icons (magnify glass)
+- [x] Add more dynamic hover animation to bars
+
+### Implementation Complete:
+- [x] Found pink color from service icons CSS (#FEE2E2, #DC143C)
+- [x] Updated bar gradient to pink: #FCA5A5 → #DC143C
+- [x] Added bounce animation with cubic-bezier(0.34, 1.56, 0.64, 1)
+- [x] Added scale(1.05) transform on hover
+- [x] Increased hover lift from -4px to -8px
+- [x] Enhanced shadow on hover (0 8px 20px)
+- [x] Reduced mobile hero padding from 3xl to lg
+- [x] Reduced hero-grid gap from xl to md on mobile
+- [x] Reduced chart padding on mobile (24px → 20px)
+- [x] Tested hover animation - working smoothly
+- [x] Tooltip shows correct percentages

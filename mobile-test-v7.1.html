@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>V7.1 Mobile Test - Pink Bars + Reduced Gap</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/growth-chart.css">
+    <style>
+        body { margin: 0; padding: 0; background: #FAFAFA; font-family: 'Inter', sans-serif; }
+        .debug-info { background: white; padding: 10px; margin: 10px; font-family: monospace; font-size: 11px; border: 1px solid #ccc; }
+        .test-section { background: white; margin: 10px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <strong>V7.1 Mobile Test</strong><br>
+        Viewport: <span id="viewport"></span><br>
+        Tests: Pink gradient, bounce animation, reduced gap
+    </div>
+    
+    <div class="hero" style="min-height: auto; padding: 40px 0 20px;">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <h1 class="hero-title">Test <span class="text-primary">Chart</span></h1>
+                    <p class="hero-description">Testing pink gradient and spacing</p>
+                </div>
+                <div class="hero-visual" style="height: auto;">
+                    <div class="growth-chart">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Visibility Growth</h3>
+                            <div class="chart-result">+112%</div>
+                        </div>
+                        <div class="chart-bars">
+                            <div class="bar-item" data-month="Month 1" data-value="100">
+                                <div class="bar" style="--height: 47%"></div>
+                                <span class="bar-label">M1</span>
+                            </div>
+                            <div class="bar-item" data-month="Month 2" data-value="120">
+                                <div class="bar" style="--height: 57%"></div>
+                                <span class="bar-label">M2</span>
+                            </div>
+                            <div class="bar-item" data-month="Month 3" data-value="145">
+                                <div class="bar" style="--height: 68%"></div>
+                                <span class="bar-label">M3</span>
+                            </div>
+                            <div class="bar-item" data-month="Month 4" data-value="170">
+                                <div class="bar" style="--height: 80%"></div>
+                                <span class="bar-label">M4</span>
+                            </div>
+                            <div class="bar-item" data-month="Month 5" data-value="190">
+                                <div class="bar" style="--height: 90%"></div>
+                                <span class="bar-label">M5</span>
+                            </div>
+                            <div class="bar-item" data-month="Month 6" data-value="212">
+                                <div class="bar" style="--height: 100%"></div>
+                                <span class="bar-label">M6</span>
+                            </div>
+                        </div>
+                        <div class="chart-baseline">
+                            <span>Baseline</span>
+                            <span>+112%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2 style="font-size: 2rem; margin-bottom: 10px;">Everything you need</h2>
+        <p style="color: #6B7280;">This section should be closer to the chart above on mobile.</p>
+    </div>
+    
+    <div class="debug-info">
+        ✓ Pink gradient (#FCA5A5 → #DC143C)<br>
+        ✓ Hover: lighter pink + scale + bounce<br>
+        ✓ Reduced gap between sections<br>
+        ✓ Mobile padding optimized
+    </div>
+    
+    <script>
+        function updateViewport() {
+            document.getElementById('viewport').textContent = window.innerWidth + 'x' + window.innerHeight;
+        }
+        updateViewport();
+        window.addEventListener('resize', updateViewport);
+    </script>
+</body>
+</html>
