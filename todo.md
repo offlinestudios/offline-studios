@@ -366,3 +366,22 @@
 - [x] Reduced chart padding on mobile (24px → 20px)
 - [x] Tested hover animation - working smoothly
 - [x] Tooltip shows correct percentages
+
+
+## V7.2 - Mobile Portfolio Layout Improvements ✓
+
+### Issues Fixed on Mobile:
+- [x] Portfolio title too large (takes too much space)
+- [x] Description too long (wall of text)
+- [x] Stats stacked vertically with excessive spacing
+- [x] Device mockups too large (dominating screen)
+- [x] Button placement awkward
+
+### Mobile-Only Improvements (Desktop Unchanged):
+- [x] Reduced title font size to 1.5rem on mobile
+- [x] Reduced description to 1rem with line-height 1.5
+- [x] Made stats horizontal (side-by-side cards with backgrounds)
+- [x] Reduced mockup size by 15% (scale 0.85) + height to 240px
+- [x] Improved button spacing (reduced top margin)
+- [x] Added visual hierarchy with light gray cards and borders
+- [x] Tested on 375px viewport (iPhone SE) - working perfectly

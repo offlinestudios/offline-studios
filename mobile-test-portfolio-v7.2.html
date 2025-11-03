@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>V7.2 Mobile Portfolio Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/growth-chart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; padding: 0; background: #FAFAFA; }
+        .debug-info { background: white; padding: 10px; margin: 10px; font-family: monospace; font-size: 11px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <strong>V7.2 Mobile Portfolio Test</strong><br>
+        Viewport: <span id="viewport"></span><br>
+        Tests: Compact title, horizontal stats, smaller mockups
+    </div>
+    
+    <section class="portfolio" style="padding: 20px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Work in Toronto</h2>
+                <p class="section-subtitle">Real results for local businesses.</p>
+            </div>
+
+            <!-- Portfolio Item 1: Passport Photo Toronto -->
+            <div class="portfolio-item" data-direction="left">
+                <div class="portfolio-grid">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Passport Photo Toronto</h3>
+                        <p class="portfolio-description">
+                            Professional passport photo studio website with online booking and SEO optimization.
+                        </p>
+                        <ul class="portfolio-features">
+                            <li>
+                                <span class="feature-label">#1 Ranking</span>
+                                <span class="feature-value">on Google downtown Toronto</span>
+                            </li>
+                            <li>
+                                <span class="feature-label">+100% Conversions</span>
+                                <span class="feature-value">year over year</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7"></path>
+                                <path d="M7 7h10v10"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="portfolio-preview">
+                        <div class="device-mockup">
+                            <div class="device-laptop">
+                                <div class="laptop-screen">
+                                    <div class="laptop-camera"></div>
+                                    <div class="laptop-display">
+                                        <img src="images/passport-desktop.webp" alt="Passport Photo Toronto Desktop">
+                                    </div>
+                                </div>
+                                <div class="laptop-base"></div>
+                            </div>
+                            <div class="device-phone">
+                                <div class="phone-frame">
+                                    <div class="phone-notch"></div>
+                                    <div class="phone-screen">
+                                        <img src="images/passport-mobile.png" alt="Passport Photo Toronto Mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="debug-info">
+        <strong>Expected on Mobile:</strong><br>
+        ✓ Title: 1.5rem (smaller)<br>
+        ✓ Description: 1rem, line-height 1.5<br>
+        ✓ Stats: Horizontal cards with background<br>
+        ✓ Mockups: 85% scale, 240px height<br>
+        ✓ Button: Reduced top margin
+    </div>
+    
+    <script>
+        function updateViewport() {
+            document.getElementById('viewport').textContent = window.innerWidth + 'x' + window.innerHeight;
+        }
+        updateViewport();
+        window.addEventListener('resize', updateViewport);
+    </script>
+</body>
+</html>
