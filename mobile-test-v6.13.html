@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>V6.13 Mobile Test - All Badges Visible</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hotfix-hero-badges.css">
+    <style>
+        body { margin: 0; padding: 20px; background: #f5f5f5; }
+        .debug-info { background: white; padding: 10px; margin: 10px 0; font-family: monospace; font-size: 11px; border: 1px solid #ccc; }
+        .badge-info { margin: 5px 0; padding: 5px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <strong>V6.13 Mobile Badge Test</strong><br>
+        Viewport: <span id="viewport"></span><br>
+        Expected: All 3 badges visible (Dentists, Law Firms, Hair Salons)
+    </div>
+    
+    <div class="hero-visual" style="position: relative; background: #e8e8e8; margin: 20px 0;">
+        <div class="stats-container">
+            <div class="stat-card stat-card-main">
+                <div class="stat-number">+112%</div>
+                <div class="stat-label">Visibility</div>
+            </div>
+            <div class="stat-badge badge-tl">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                <span>Dentists</span>
+            </div>
+            <div class="stat-badge badge-tr">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L3 7l9 5 9-5-9-5z"/>
+                    <path d="M3 17l9 5 9-5M3 12l9 5 9-5"/>
+                </svg>
+                <span>Law Firms</span>
+            </div>
+            <div class="stat-badge badge-bl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>Hair Salons</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="debug-info" id="badge-status"></div>
+    
+    <script>
+        function updateDebug() {
+            document.getElementById('viewport').textContent = window.innerWidth + 'x' + window.innerHeight;
+            
+            const badges = document.querySelectorAll('.stat-badge');
+            let html = '<strong>Badge Status:</strong><br>';
+            
+            badges.forEach(badge => {
+                const rect = badge.getBoundingClientRect();
+                const styles = getComputedStyle(badge);
+                const text = badge.querySelector('span')?.textContent || 'unknown';
+                const visible = rect.width > 0 && rect.height > 0 && rect.x >= 0 && rect.y >= 0;
+                
+                html += `<div class="badge-info">`;
+                html += `<strong>${text}</strong>: ${visible ? '✓ VISIBLE' : '✗ HIDDEN'}<br>`;
+                html += `Position: top=${styles.top}, left=${styles.left}, right=${styles.right}, bottom=${styles.bottom}<br>`;
+                html += `Screen: x=${Math.round(rect.x)}px, y=${Math.round(rect.y)}px<br>`;
+                html += `Size: ${Math.round(rect.width)}x${Math.round(rect.height)}px, z-index=${styles.zIndex}`;
+                html += `</div>`;
+            });
+            
+            document.getElementById('badge-status').innerHTML = html;
+        }
+        
+        updateDebug();
+        window.addEventListener('resize', updateDebug);
+    </script>
+</body>
+</html>

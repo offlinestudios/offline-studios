@@ -1,20 +1,20 @@
 /* 
- * Mobile Hero Badge Hotfix - V6.12
+ * Mobile Hero Badge Hotfix - V6.13
  * 
- * Purpose: Fix badge overlap on mobile - ensure distinct vertical positions
+ * Purpose: Fix Law Firms badge invisibility + ensure all badges visible
  * 
- * ROOT CAUSE IDENTIFIED:
- * - badge-tl and badge-tr both at top: 6% causes same vertical level
- * - On narrow screens (375px-390px), badges appear stacked/overlapping
- * - User screenshot shows "Hair Salons" and "Law Firms" text in same badge
+ * V6.12 ISSUE:
+ * - Law Firms badge at top: 28% was invisible on mobile
+ * - Likely positioned too far down or behind +112% card
+ * - User screenshot shows only Hair Salons and Dentists visible
  * 
- * Solution:
- * - Give each badge distinct vertical position with generous spacing
- * - badge-tl: top 8% (Dentists)
- * - badge-tr: top 28% (Law Firms) - moved down significantly  
- * - badge-bl: bottom 8% (Hair Salons)
- * - Increase hero height to 600px for more vertical space
- * - Reduce badge size to 64px for tighter footprint
+ * V6.13 Solution:
+ * - Use smaller top percentages for all badges (keep them in upper area)
+ * - badge-tl (Dentists): top 10%, left 8%
+ * - badge-tr (Law Firms): top 15%, right 8% (visible in top-right)
+ * - badge-bl (Hair Salons): bottom 10%, left 8%
+ * - Increase z-index on badges to ensure they're above card
+ * - Keep hero height at 600px for spacing
  */
 
 @media (max-width: 768px) {
@@ -28,6 +28,7 @@
   .stat-card.stat-card-main {
     padding: 16px !important;
     max-width: 240px !important;
+    z-index: 20 !important; /* Below badges */
   }
   
   .stat-card.stat-card-main .stat-number { 
@@ -44,6 +45,7 @@
     height: 64px !important;
     animation: none !important;
     transform: none !important;
+    z-index: 30 !important; /* Above card */
   }
   
   .stat-badge svg { 
@@ -56,19 +58,19 @@
     line-height: 1.1 !important;
   }
 
-  /* CRITICAL FIX: Distinct vertical positions to prevent overlap */
+  /* CRITICAL FIX: All badges in upper area, clearly visible */
   .badge-tl { 
-    top: 8% !important; 
-    left: 6% !important; 
+    top: 10% !important; 
+    left: 8% !important; 
   }
   
   .badge-tr { 
-    top: 28% !important;  /* Moved down from 6% to create vertical separation */
-    right: 6% !important; 
+    top: 15% !important;  /* Slightly lower than left badge, but still in top area */
+    right: 8% !important; 
   }
   
   .badge-bl { 
-    bottom: 8% !important; 
-    left: 6% !important; 
+    bottom: 10% !important; 
+    left: 8% !important; 
   }
 }

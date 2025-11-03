@@ -280,3 +280,23 @@
 - [x] Increased hero height to 600px for more vertical space
 - [x] Reduced badge size to 64px for tighter footprint
 - [x] All badges now have generous vertical separation
+
+## V6.13 - Fixed Law Firms Badge Visibility ✓
+
+### Issue: Law Firms Badge Not Showing
+- [x] User screenshot showed only 2 badges visible (Hair Salons, Dentists)
+- [x] Law Firms badge (badge-tr) was completely invisible
+- [x] Badge was positioned at top: 28%, right: 6% (too far down)
+
+### Root Cause:
+- [x] V6.12 positioned Law Firms at top: 28% which was too far down
+- [x] Badge was either off-screen or hidden behind +112% card
+- [x] Z-index may have been insufficient
+
+### Solution Applied:
+- [x] Moved Law Firms badge to top: 15% (visible in top area)
+- [x] Moved Dentists to top: 10% for better spacing
+- [x] Moved Hair Salons to bottom: 10%
+- [x] Added z-index: 30 to all badges (above card's z-index: 20)
+- [x] All three badges now clearly visible on mobile
+- [x] Tested on desktop viewport - all badges visible
