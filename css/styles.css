@@ -412,26 +412,27 @@ section {
 .portfolio-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: "content preview";
     gap: var(--spacing-3xl);
     align-items: start;
 }
 
-/* Default order: content first, preview second */
 .portfolio-content {
-    order: 1;
+    grid-area: content;
 }
 
 .portfolio-preview {
-    order: 2;
+    grid-area: preview;
+}
+
+.portfolio-cta {
+    grid-column: 1 / -1;
+    margin-top: var(--spacing-md);
 }
 
 /* Reverse order for alternating layout */
-.portfolio-grid-reverse .portfolio-content {
-    order: 2;
-}
-
-.portfolio-grid-reverse .portfolio-preview {
-    order: 1;
+.portfolio-grid-reverse {
+    grid-template-areas: "preview content";
 }
 
 .portfolio-content {
@@ -453,22 +454,27 @@ section {
 }
 
 .portfolio-features {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    margin: var(--spacing-md) 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
 }
 
 .portfolio-features li {
+    background: #F9FAFB;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: var(--spacing-lg);
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .feature-label {
-    font-weight: 700;
+    font-weight: 800;
     color: var(--color-primary);
-    font-size: 0.9375rem;
+    font-size: 1rem;
 }
 
 .feature-value {
@@ -983,19 +989,9 @@ section {
         grid-template-columns: 1fr;
     }
     
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
+    /* Portfolio grid styling moved to line ~1020 with grid areas */
     
-    /* Reset order on mobile - always show content first */
-    .portfolio-content {
-        order: 1;
-    }
-    
-    .portfolio-preview {
-        order: 2;
-    }
+
     
     .process-grid {
         grid-template-columns: 1fr;
@@ -1010,48 +1006,54 @@ section {
         gap: var(--spacing-xl);
     }
     
-    /* Mobile portfolio improvements - V7.2 + V7.3 */
+    /* Mobile portfolio improvements - V7.5 with Grid Areas */
     
-    /* Make portfolio-grid a flex container on mobile for reordering */
+    /* Use CSS Grid with template areas for clean mobile layout */
     .portfolio-grid {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title"
+            "description"
+            "stats"
+            "mockups"
+            "button";
+        gap: var(--spacing-md);
     }
     
+    /* Assign grid areas to each element */
     .portfolio-title {
+        grid-area: title;
         font-size: 1.5rem;
-        margin-bottom: var(--spacing-md);
         text-align: center;
-        order: 1;
     }
     
     .portfolio-description {
+        grid-area: description;
         font-size: 1rem;
         line-height: 1.5;
-        margin-bottom: var(--spacing-md);
         text-align: center;
-        order: 2;
     }
     
-    /* Horizontal stat cards on mobile */
     .portfolio-features {
-        flex-direction: row;
-        gap: var(--spacing-xs);
-        margin: var(--spacing-md) 0 var(--spacing-lg) 0;
-        order: 3;
+        grid-area: stats;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-sm);
+        margin: 0;
     }
     
     .portfolio-features li {
-        flex: 1;
-        background: var(--color-surface);
-        padding: var(--spacing-sm);
-        border-radius: 0.5rem;
-        border: 1px solid var(--color-border);
+        background: #F3F4F6;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.75rem;
+        padding: var(--spacing-md);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
     
     .feature-label {
         font-size: 0.875rem;
-        font-weight: 700;
+        font-weight: 800;
         color: var(--color-primary);
         display: block;
         margin-bottom: 0.25rem;
@@ -1063,6 +1065,14 @@ section {
         line-height: 1.3;
     }
     
+    .portfolio-preview {
+        grid-area: mockups;
+        height: 240px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    
     /* Smaller device mockups on mobile - centered */
     .device-mockup {
         height: 240px;
@@ -1070,24 +1080,18 @@ section {
         transform-origin: center top;
     }
     
-    .portfolio-preview {
-        height: 240px;
-        margin-top: -20px;
-        margin-bottom: var(--spacing-lg);
+    .portfolio-cta {
+        grid-area: button;
+        margin: 0;
         display: flex;
         justify-content: center;
-        order: 4;
     }
     
-    /* Move button below mockups and center it */
-    .portfolio-content .btn {
+    .portfolio-cta .btn {
         margin: 0 auto;
-        order: 5;
-        display: block;
-        width: fit-content;
     }
     
-    /* Make portfolio-content display contents so children can be reordered in grid */
+    /* Make portfolio-content use grid subgrid for proper area assignment */
     .portfolio-content {
         display: contents;
     }

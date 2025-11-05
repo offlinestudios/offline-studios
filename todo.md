@@ -440,3 +440,56 @@
 - [x] Kept all other V7.3.1 features (center alignment, etc.)
 - [x] Verified CSS changes in served file
 - [x] Ready to deploy to GitHub
+
+
+## V7.5 - Fix V7.4 Issues (Analysis from Other AI)
+
+### Issues Identified:
+- [ ] Stat cards are plain list items (no card styling, no 2-column grid)
+- [ ] Button is inside portfolio-content (wrong position)
+- [ ] Need rounded grey cards with borders for stats
+- [ ] Need button below mockups as separate grid area
+
+### Solution from Other AI:
+- [ ] Style portfolio-features as 2-column grid with card backgrounds
+- [ ] Move button out of portfolio-content into separate portfolio-cta div
+- [ ] Use CSS Grid areas instead of flexbox order
+- [ ] grid-template-areas: "content" "preview" "cta" on mobile
+
+### Implementation:
+- [ ] Update HTML to move button into portfolio-cta wrapper
+- [ ] Style portfolio-features li as cards (background, border, padding)
+- [ ] Use grid-template-areas for cleaner layout control
+- [ ] Test on mobile viewport
+
+## V7.5 - Mobile Portfolio Layout with CSS Grid Areas ✓
+
+### Issue: Stat Cards Not Styled + Button Positioning Unreliable
+- [x] Stat cards were plain list items, not styled as rounded grey cards
+- [x] Button positioning was unreliable due to flexbox order approach
+- [x] Needed cleaner, more maintainable layout solution
+
+### Solution: CSS Grid Areas Approach
+- [x] Moved button from inside `.portfolio-content` to separate `.portfolio-cta` wrapper
+- [x] Converted `.portfolio-grid` from flexbox to CSS Grid on mobile
+- [x] Defined grid template areas: title → description → stats → mockups → button
+- [x] Styled stat cards as proper rounded grey cards (#F3F4F6 background, 0.75rem border-radius)
+- [x] Created 2-column grid layout for stat cards
+- [x] Removed conflicting CSS rules that were overriding grid areas
+- [x] Button now reliably appears below mockups
+
+### Desktop Layout
+- [x] Grid template areas: "content preview"
+- [x] Button spans both columns with `grid-column: 1 / -1`
+- [x] Stat cards styled as rounded grey cards in 2-column grid
+
+### Mobile Layout (≤ 768px)
+- [x] Grid template areas: title → description → stats → mockups → button
+- [x] All elements center-aligned
+- [x] Stat cards appear as proper rounded grey cards in 2-column grid
+- [x] Mockups appear between stat cards and button
+- [x] Button centered below mockups
+
+### Files Modified
+- [x] index.html - Moved buttons into `.portfolio-cta` wrapper (all 4 portfolio items)
+- [x] css/styles.css - Implemented CSS Grid areas, styled stat cards, removed conflicting rules
