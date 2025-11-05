@@ -403,3 +403,40 @@
 - [x] Made portfolio-grid flex container for reordering
 - [x] Adjusted margins for equal spacing
 - [x] Tested on 375px viewport - working perfectly
+
+
+## V7.3.1 - Fixed V7.3 Layout (Order Corrected) ✓
+
+### Issue: V7.3 CSS Changes Not Applied
+- [x] User screenshots showed layout was still wrong
+- [x] Title and description were LEFT-aligned (not centered)
+- [x] Button was ABOVE mockups (not below)
+- [x] Mockups were BELOW stat cards (should be above)
+
+### Root Cause Found:
+- [x] CSS was deployed but order values were wrong
+- [x] Had mockups at order: 4, stat cards at order: 3
+- [x] Should be: mockups at order: 3, stat cards at order: 4
+
+### Fix Applied:
+- [x] Swapped order values for mockups and stat cards
+- [x] mockups: order: 3 (now before stat cards)
+- [x] stat cards: order: 4 (now after mockups)
+- [x] Tested on 375px viewport - working perfectly
+- [x] Correct order: Title → Description → Mockups → Stats → Button
+
+
+## V7.4 - Implement Figma Mobile Layout (Stat Cards Above Mockups) ✓
+
+### User Request:
+- [x] User provided Figma mockup showing desired mobile layout
+- [x] Stat cards should appear ABOVE mockups (not below)
+- [x] Order: Title → Description → Stat Cards → Mockups → Button
+
+### Implementation Complete:
+- [x] Swapped order values (reverse of V7.3.1)
+- [x] stat cards: order: 3 (above mockups)
+- [x] mockups: order: 4 (below stat cards)
+- [x] Kept all other V7.3.1 features (center alignment, etc.)
+- [x] Verified CSS changes in served file
+- [x] Ready to deploy to GitHub
