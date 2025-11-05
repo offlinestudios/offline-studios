@@ -722,3 +722,23 @@
 - [x] Mobile overlay always visible at 90% opacity
 - [x] Tested on dev server - all portfolio items working
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
+
+## V10.2 - Refine Overlay to Only Cover Mockup Devices
+
+### Issue: Dark overlay covers entire preview container
+- [ ] Current overlay covers full rectangular .portfolio-preview area
+- [ ] Creates large dark box around mockups (not just over devices)
+- [ ] User wants overlay to only appear over the actual mockup devices
+
+### Solution
+- [ ] Move overlay positioning from .portfolio-preview to .device-mockup
+- [ ] Make .device-mockup position: relative
+- [ ] Make .portfolio-overlay cover only .device-mockup, not full container
+- [ ] Overlay should fit tightly around the mockup devices
+- [ ] No dark background outside the mockup area
+
+### Testing
+- [ ] Test on dev server
+- [ ] Verify overlay only covers mockup devices
+- [ ] Check all 4 portfolio items
+- [ ] Deploy to GitHub Pages
