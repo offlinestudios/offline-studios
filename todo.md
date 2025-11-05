@@ -561,3 +561,31 @@
 - [x] Reverse layout (mockup LEFT): justify-content: flex-end (right-align)
 - [x] Reduce margin-top on .portfolio-cta from current value to ~16px
 - [x] Test all 4 portfolio items for correct alignment
+
+## V9.1 - Fix Portfolio Button Vertical Positioning
+
+### Issue
+- [x] Button is positioned too far down the page (way below viewport)
+- [x] Button should appear directly below the two stat cards (like in DESKTOPVIEW.png mockup)
+- [x] Currently there's excessive vertical space between stat cards and button
+
+### Investigation Needed
+- [x] Check if mockup images are causing the button to be pushed down
+- [x] Check portfolio-preview (mockup container) height/positioning
+- [x] Check if grid-template-rows is causing issues
+- [x] Verify grid-area positioning for button
+
+### Root Cause Found
+- [x] Button used `grid-column: 1 / -1` which spans both columns
+- [x] This forces button to wait for BOTH content AND mockup to render
+- [x] Tall mockup images push button way down
+
+### Solution Implemented
+- [x] Changed `grid-column: 1 / -1` to `grid-column: auto`
+- [x] Button now stays in content column only
+- [x] Button appears directly below stat cards, independent of mockup height
+
+### Expected Behavior (from DESKTOPVIEW.png)
+- [x] Button should be visible immediately below stat cards
+- [x] Button should be at same vertical level as bottom of stat cards
+- [x] Minimal spacing between stat cards and button (~16px)

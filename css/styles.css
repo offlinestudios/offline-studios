@@ -426,7 +426,8 @@ section {
 }
 
 .portfolio-cta {
-    grid-column: 1 / -1;
+    /* Button stays in content column, doesn't span both columns */
+    grid-column: auto;
     margin-top: 16px; /* Reduced from var(--spacing-md) for tighter spacing */
     display: flex;
 }
