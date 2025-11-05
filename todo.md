@@ -493,3 +493,28 @@
 ### Files Modified
 - [x] index.html - Moved buttons into `.portfolio-cta` wrapper (all 4 portfolio items)
 - [x] css/styles.css - Implemented CSS Grid areas, styled stat cards, removed conflicting rules
+
+## V8 - Add Passport Photo Toronto Case Study Page
+
+### Case Study Page
+- [x] Create new page: `case-study-passport-photo-toronto.html`
+- [x] Add hero section with key metric (+112% conversions)
+- [x] Add Overview & Challenges sections
+- [x] Add Strategy Breakdown (5 sections with results)
+- [x] Add Results Summary table
+- [x] Add Takeaways & Next Steps sections
+- [x] Style page to match main site design
+- [x] Add navigation header and footer
+- [x] Make page mobile-responsive
+
+### Testimonial Card Link
+- [x] Add "Read Full Case Study →" link to Passport Photo Toronto testimonial card
+- [x] Link to `/case-study-passport-photo-toronto.html`
+- [x] Style link to match brand (subtle, professional)
+- [x] Test link functionality
+
+### Testing
+- [x] Verify case study page loads correctly
+- [x] Test mobile responsiveness
+- [x] Check all internal links work
+- [x] Verify navigation back to main site
