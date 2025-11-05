@@ -473,6 +473,11 @@ section {
     transform: translateY(-2px) scale(1.05);
 }
 
+/* Hide standalone CTA buttons - using hover overlay instead */
+.portfolio-cta {
+    display: none;
+}
+
 /* Reverse order for alternating layout */
 .portfolio-grid-reverse {
     grid-template-areas: "preview content";
@@ -1143,7 +1148,7 @@ section {
     .portfolio-cta {
         grid-area: button;
         margin: 0;
-        display: flex;
+        display: none; /* Hidden - using hover overlay instead */
         justify-content: center;
     }
     
