@@ -427,7 +427,18 @@ section {
 
 .portfolio-cta {
     grid-column: 1 / -1;
-    margin-top: var(--spacing-md);
+    margin-top: 16px; /* Reduced from var(--spacing-md) for tighter spacing */
+    display: flex;
+}
+
+/* Normal layout (mockup RIGHT, text LEFT): button LEFT-aligned */
+.portfolio-grid .portfolio-cta {
+    justify-content: flex-start;
+}
+
+/* Reverse layout (mockup LEFT, text RIGHT): button RIGHT-aligned */
+.portfolio-grid-reverse .portfolio-cta {
+    justify-content: flex-end;
 }
 
 /* Reverse order for alternating layout */

@@ -541,3 +541,23 @@
 - [x] Ensure color palette matches landing page (white, light grey, red accents)
 - [x] Remove any design elements not present on landing page
 - [x] Test visual consistency side-by-side with landing page
+
+## V9 - Fix Portfolio Button Alignment & Spacing
+
+### Button Alignment Issues
+- [x] Passport Photo Toronto (mockup RIGHT, text LEFT): Button should be LEFT-aligned ✓ (currently correct)
+- [x] Headshot Photo Toronto (mockup LEFT, text RIGHT): Button should be RIGHT-aligned (currently LEFT-aligned ❌)
+- [x] Julian Ross Photography (mockup RIGHT, text LEFT): Button should be LEFT-aligned ✓ (currently correct)
+- [x] Julian Ross Music (mockup LEFT, text RIGHT): Button should be RIGHT-aligned (currently LEFT-aligned ❌)
+
+### Spacing Issues
+- [x] Reduce gap between stat cards and "View Project" button
+- [x] Button appears too far below grey stat cards
+- [x] Make vertical spacing more consistent and visually balanced
+
+### Implementation
+- [x] Add CSS rule to align button based on portfolio-grid-reverse class
+- [x] Normal layout (mockup RIGHT): justify-content: flex-start (left-align)
+- [x] Reverse layout (mockup LEFT): justify-content: flex-end (right-align)
+- [x] Reduce margin-top on .portfolio-cta from current value to ~16px
+- [x] Test all 4 portfolio items for correct alignment
