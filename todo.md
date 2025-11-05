@@ -518,3 +518,26 @@
 - [x] Test mobile responsiveness
 - [x] Check all internal links work
 - [x] Verify navigation back to main site
+
+## V8.1 - Fix Case Study Page Design Consistency
+
+### Header & Footer
+- [x] Update header to match landing page exactly (same structure, spacing, styling)
+- [x] Update footer to match landing page (light grey background, same layout)
+
+### Hero Section
+- [x] Remove black gradient background
+- [x] Change to white or light grey background matching landing page
+- [x] Remove emoji badges (📅, 📍, 🏆)
+- [x] Simplify hero design to match landing page aesthetic
+
+### Content Sections
+- [x] Remove all colored emojis (🏢, 🔍, ⭐, 📈, 🎨, 🔗)
+- [x] Replace emoji icons with simple text or remove entirely
+- [x] Reduce spacing between sections (currently too spread out)
+- [x] Match section padding/margins to landing page
+
+### Overall Consistency
+- [x] Ensure color palette matches landing page (white, light grey, red accents)
+- [x] Remove any design elements not present on landing page
+- [x] Test visual consistency side-by-side with landing page
