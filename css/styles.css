@@ -423,30 +423,54 @@ section {
 
 .portfolio-preview {
     grid-area: preview;
+    position: relative; /* For absolute positioning of overlay */
 }
 
-.portfolio-cta {
-    /* Button stays in content column, doesn't span both columns */
-    grid-column: auto;
-    margin-top: 16px; /* Reduced from var(--spacing-md) for tighter spacing */
+/* Hover Overlay on Mockup Preview */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75); /* Semi-transparent dark overlay */
     display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Smooth fade-in/out */
+    z-index: 10; /* Above mockup images */
+    border-radius: 12px; /* Match mockup border radius */
 }
 
-/* Normal layout (mockup RIGHT, text LEFT): button LEFT-aligned */
-.portfolio-grid .portfolio-cta {
-    justify-content: flex-start;
+/* Show overlay on hover (desktop) */
+.portfolio-preview:hover .portfolio-overlay {
+    opacity: 1;
 }
 
-/* Reverse layout (mockup LEFT, text RIGHT): button RIGHT-aligned */
-.portfolio-grid-reverse .portfolio-cta {
-    justify-content: flex-end;
-}
-
-/* Desktop-only: tighter spacing between stat cards and button */
-@media (min-width: 1024px) {
-    .portfolio-cta {
-        margin-top: 0.5rem; /* 8px - tighter spacing on desktop */
+/* Mobile: Show overlay with reduced opacity (always visible) */
+@media (max-width: 768px) {
+    .portfolio-overlay {
+        opacity: 0.9; /* Always visible on mobile with slight transparency */
     }
+}
+
+/* Ensure button is visible and properly styled in overlay */
+.portfolio-overlay .btn {
+    position: relative;
+    z-index: 11;
+    pointer-events: auto;
+    background-color: #DC143C !important; /* Force red background */
+    color: white !important; /* Force white text */
+    box-shadow: 0 4px 20px rgba(220, 20, 60, 0.5);
+    font-weight: 600;
+    padding: 14px 28px;
+    font-size: 1.125rem;
+}
+
+.portfolio-overlay .btn:hover {
+    background-color: #B01030 !important;
+    transform: translateY(-2px) scale(1.05);
 }
 
 /* Reverse order for alternating layout */

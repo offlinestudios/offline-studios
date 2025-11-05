@@ -606,3 +606,65 @@
 - [x] Verify mobile spacing unchanged (16px preserved)
 - [x] Verify desktop spacing reduced (8px applied)
 - [x] Check all 4 portfolio items on both mobile and desktop
+
+## V10 - Replace Button with Hover Overlay on Mockup Preview
+
+### Remove Standalone Button
+- [ ] Remove .portfolio-cta wrapper and standalone button from HTML
+- [ ] Remove .portfolio-cta CSS rules
+- [ ] Clean up grid areas that reference button
+
+### Add Hover Overlay to Mockup Preview
+- [ ] Add overlay container inside .portfolio-preview
+- [ ] Position overlay absolutely over mockup images
+- [ ] Add semi-transparent dark background (rgba(0,0,0,0.7))
+- [ ] Center "View Project" button in overlay
+- [ ] Hide overlay by default (opacity: 0)
+- [ ] Show overlay on hover (opacity: 1)
+- [ ] Add smooth transition animation
+
+### Mobile Considerations
+- [ ] Decide mobile behavior: always visible with reduced opacity OR tap to show
+- [ ] Test touch interaction on mobile devices
+- [ ] Ensure button is accessible and clickable
+
+### Testing
+- [ ] Test hover interaction on all 4 portfolio items
+- [ ] Verify smooth fade-in/fade-out animation
+- [ ] Test on desktop (mouse hover)
+- [ ] Test on mobile (touch interaction)
+- [ ] Verify links work correctly
+
+
+## V10 - Replace Button with Hover Overlay on Mockup Preview ✓
+
+### Remove Standalone Button
+- [x] Remove `.portfolio-cta` div from all 4 portfolio items
+- [x] Remove standalone "View Project" button below stat cards
+
+### Add Hover Overlay
+- [x] Add `.portfolio-overlay` div inside `.portfolio-preview`
+- [x] Position overlay absolutely to cover entire mockup preview
+- [x] Add dark semi-transparent background (rgba(0, 0, 0, 0.75))
+- [x] Center "View Project" button in overlay
+- [x] Hide overlay by default (opacity: 0)
+- [x] Show overlay on hover (opacity: 1)
+- [x] Add smooth transition animation
+
+### Button Styling in Overlay
+- [x] Style button with red background (#DC143C)
+- [x] White text color
+- [x] Add arrow icon
+- [x] Add hover effect (scale, shadow)
+- [x] Ensure button is clickable
+- [x] Used inline styles to ensure visibility
+- [x] Added white container div for better contrast
+
+### Mobile Behavior
+- [x] On mobile (<768px): Show overlay with reduced opacity (always visible)
+
+### Testing
+- [x] Test hover interaction on desktop
+- [x] Test all 4 portfolio items
+- [x] Verify button links work correctly
+- [ ] Test mobile behavior (pending final deployment)
