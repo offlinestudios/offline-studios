@@ -726,19 +726,19 @@
 ## V10.2 - Refine Overlay to Only Cover Mockup Devices
 
 ### Issue: Dark overlay covers entire preview container
-- [ ] Current overlay covers full rectangular .portfolio-preview area
-- [ ] Creates large dark box around mockups (not just over devices)
-- [ ] User wants overlay to only appear over the actual mockup devices
+- [x] Current overlay covers full rectangular .portfolio-preview area
+- [x] Creates large dark box around mockups (not just over devices)
+- [x] User wants overlay to only appear over the actual mockup devices
 
 ### Solution
-- [ ] Move overlay positioning from .portfolio-preview to .device-mockup
-- [ ] Make .device-mockup position: relative
-- [ ] Make .portfolio-overlay cover only .device-mockup, not full container
-- [ ] Overlay should fit tightly around the mockup devices
-- [ ] No dark background outside the mockup area
+- [x] Changed .device-mockup from fit-content to fixed 480x320px dimensions
+- [x] Moved .portfolio-overlay inside .device-mockup for proper positioning
+- [x] Changed .portfolio-preview to min-height instead of fixed height
+- [x] Updated hover trigger from .portfolio-preview to .device-mockup
+- [x] Overlay now tightly fits mockup devices without large black box
 
 ### Testing
-- [ ] Test on dev server
-- [ ] Verify overlay only covers mockup devices
-- [ ] Check all 4 portfolio items
-- [ ] Deploy to GitHub Pages
+- [x] Tested on dev server
+- [x] Verified overlay only covers mockup devices (much tighter fit)
+- [x] Checked all 4 portfolio items - working correctly
+- [x] Deployed to GitHub Pages (offlinestudios.ca)
