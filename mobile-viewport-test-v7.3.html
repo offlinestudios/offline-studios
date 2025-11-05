@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V7.3 Mobile Viewport Test (375px)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: monospace;
+        }
+        .info {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .mobile-frame {
+            width: 375px;
+            height: 812px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <strong>V7.3 Mobile Portfolio Test - 375px Viewport (iPhone SE)</strong><br>
+        <strong>NEW Changes:</strong><br>
+        • Title & description: CENTER-ALIGNED<br>
+        • Device mockups: CENTERED<br>
+        • View Project button: BELOW mockups (not above)<br>
+        • Stat cards: Equal spacing from title/description
+    </div>
+    
+    <div class="mobile-frame">
+        <iframe src="/?v=7.3#work"></iframe>
+    </div>
+</body>
+</html>

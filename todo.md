@@ -385,3 +385,21 @@
 - [x] Improved button spacing (reduced top margin)
 - [x] Added visual hierarchy with light gray cards and borders
 - [x] Tested on 375px viewport (iPhone SE) - working perfectly
+
+
+## V7.3 - Mobile Portfolio Layout Rearrangement ✓
+
+### User Request:
+- [x] Center-align title and description on mobile
+- [x] Center-align device mockups
+- [x] Move "View Project" button below mockups (not above)
+- [x] Adjust spacing between stat cards and title/description (equal padding)
+
+### Implementation Complete:
+- [x] Added text-align: center to title and description
+- [x] Reordered elements using CSS flexbox order property
+- [x] New order: Title (1) → Description (2) → Stats (3) → Mockups (4) → Button (5)
+- [x] Used display: contents on portfolio-content to flatten hierarchy
+- [x] Made portfolio-grid flex container for reordering
+- [x] Adjusted margins for equal spacing
+- [x] Tested on 375px viewport - working perfectly
