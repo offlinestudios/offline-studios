@@ -668,3 +668,57 @@
 - [x] Test all 4 portfolio items
 - [x] Verify button links work correctly
 - [ ] Test mobile behavior (pending final deployment)
+
+
+## V10.1 - Fix Critical Portfolio Layout Bugs
+
+### Mockup Images Not Displaying
+- [ ] Headshot Photo Toronto mockup missing (only dark bar visible)
+- [ ] Julian Ross Music mockup missing (only dark bar visible)
+- [ ] Julian Ross Photography mockup partially broken
+- [ ] Investigate why .device-mockup images aren't rendering
+
+### Layout Overlapping Issues
+- [ ] Headshot Photo Toronto text overlapping with Julian Ross Photography
+- [ ] Portfolio items not properly separated
+- [ ] Grid layout broken
+
+### Overlay Issues
+- [ ] Overlay showing over blank space (no mockup visible underneath)
+- [ ] View Project button appearing over nothing
+
+### Investigation Needed
+- [ ] Check if overlay is hiding mockup images
+- [ ] Check if .device-mockup has display/visibility issues
+- [ ] Check if z-index is causing mockups to be hidden
+- [ ] Verify image paths are correct
+- [ ] Check if CSS is hiding .device-mockup
+
+### Root Cause Analysis
+- [ ] Compare working V9.2 HTML with broken V10 HTML
+- [ ] Identify what changed that broke mockup display
+- [ ] Check if overlay positioning is affecting mockup rendering
+
+## V10.1 - Fix Portfolio Overlay HTML Order ✓
+
+### Critical Bug: Mockup Images Not Displaying
+- [x] Root cause: .portfolio-overlay positioned BEFORE .device-mockup in HTML
+- [x] Absolute-positioned overlay was covering and hiding mockup images
+- [x] Only dark horizontal bars visible instead of mockups
+
+### Solution
+- [x] Restored V9.2 working version from git (commit f81cb28)
+- [x] Added .portfolio-overlay div AFTER .device-mockup closing tag
+- [x] Hidden standalone .portfolio-cta buttons with display: none
+- [x] Kept existing overlay CSS (opacity transitions, hover effects)
+
+### Result
+- [x] All 4 portfolio mockup images now display correctly
+- [x] Passport Photo Toronto - mockups visible ✓
+- [x] Headshot Photo Toronto - mockups visible ✓
+- [x] Julian Ross Photography - mockups visible ✓
+- [x] Julian Ross Music - mockups visible ✓
+- [x] Hover overlay appears on desktop with "View Project" button
+- [x] Mobile overlay always visible at 90% opacity
+- [x] Tested on dev server - all portfolio items working
+- [x] Deployed to GitHub Pages (offlinestudios.ca)
