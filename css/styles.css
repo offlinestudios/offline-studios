@@ -442,6 +442,13 @@ section {
     justify-content: flex-end;
 }
 
+/* Desktop-only: tighter spacing between stat cards and button */
+@media (min-width: 1024px) {
+    .portfolio-cta {
+        margin-top: 0.5rem; /* 8px - tighter spacing on desktop */
+    }
+}
+
 /* Reverse order for alternating layout */
 .portfolio-grid-reverse {
     grid-template-areas: "preview content";

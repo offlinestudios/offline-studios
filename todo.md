@@ -589,3 +589,20 @@
 - [x] Button should be visible immediately below stat cards
 - [x] Button should be at same vertical level as bottom of stat cards
 - [x] Minimal spacing between stat cards and button (~16px)
+
+## V9.2 - Reduce Button Spacing on Desktop Only
+
+### Requirement
+- [x] Keep mobile spacing unchanged (margin-top: 16px)
+- [x] Reduce desktop spacing to tighten gap between stat cards and button
+- [x] Use media query @media (min-width: 1024px) for desktop-only rule
+
+### Implementation
+- [x] Change .portfolio-cta margin-top to 0.5rem (8px) on desktop only
+- [x] Keep existing 16px spacing on mobile
+- [x] Test both mobile and desktop views
+
+### Testing
+- [x] Verify mobile spacing unchanged (16px preserved)
+- [x] Verify desktop spacing reduced (8px applied)
+- [x] Check all 4 portfolio items on both mobile and desktop
