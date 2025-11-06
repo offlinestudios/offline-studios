@@ -390,7 +390,7 @@ section {
 
 /* ===== Portfolio Section ===== */
 .portfolio {
-    background-color: white;
+    /* background-color removed - mockups float on page background */
 }
 
 .portfolio-item {

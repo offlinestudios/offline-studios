@@ -787,3 +787,22 @@
 - [x] Verified lift + shadow animation smooth and professional
 - [x] Checked all 4 portfolio items - Passport Photo, Headshot Photo, Julian Ross Photography, Julian Ross Music
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
+
+## V10.5 - Remove White Card Background Behind Mockup Preview
+
+### Issue
+- [ ] White card/container background behind mockup preview looks cluttered
+- [ ] Want mockups to float directly on page background
+- [ ] Remove rectangular white background container
+
+### Solution
+- [ ] Remove background-color from .portfolio-preview or parent container
+- [ ] Remove border-radius, padding, box-shadow from white card
+- [ ] Keep mockups floating cleanly on page background
+- [ ] Maintain lift + shadow hover effect
+
+### Testing
+- [ ] Test on dev server
+- [ ] Verify white background removed
+- [ ] Check all 4 portfolio items
+- [ ] Deploy to GitHub Pages
