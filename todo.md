@@ -766,23 +766,24 @@
 - [x] Tested all 4 portfolio items - all functional
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
 
-## V10.4 - Replace Dark Overlay with Lift + Shadow Animation
+## V10.4 - Replace Dark Overlay with Lift + Shadow Animation ✓
 
 ### Issue
-- [ ] Dark overlay on hover is visually unappealing
-- [ ] Blocks view of mockup designs when hovering
-- [ ] Need better animation to indicate clickability
+- [x] Dark overlay on hover was visually unappealing
+- [x] Blocked view of mockup designs when hovering
+- [x] Needed better animation to indicate clickability
 
 ### Solution: Lift + Shadow Effect
-- [ ] Remove dark semi-transparent overlay (.portfolio-overlay)
-- [ ] Implement lift animation: translateY(-8px) on hover
-- [ ] Enhanced shadow that grows beneath mockup
-- [ ] Keep subtle scale(1.03) for emphasis
-- [ ] Modern "floating card" effect
-- [ ] Mockups remain fully visible on hover
+- [x] Removed dark semi-transparent overlay (.portfolio-overlay)
+- [x] Removed overlay hint text elements from HTML
+- [x] Implemented lift animation: translateY(-8px) + scale(1.03) on hover
+- [x] Multi-layered enhanced shadow with red glow beneath mockup
+- [x] Smooth 0.4s cubic-bezier transitions
+- [x] Modern "floating card" effect achieved
+- [x] Mockups remain fully visible on hover
 
 ### Testing
-- [ ] Test on dev server
-- [ ] Verify lift + shadow animation works smoothly
-- [ ] Check all 4 portfolio items
-- [ ] Deploy to GitHub Pages
+- [x] Tested on dev server - working perfectly
+- [x] Verified lift + shadow animation smooth and professional
+- [x] Checked all 4 portfolio items - Passport Photo, Headshot Photo, Julian Ross Photography, Julian Ross Music
+- [x] Deployed to GitHub Pages (offlinestudios.ca)
