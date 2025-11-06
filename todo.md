@@ -788,21 +788,21 @@
 - [x] Checked all 4 portfolio items - Passport Photo, Headshot Photo, Julian Ross Photography, Julian Ross Music
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
 
-## V10.5 - Remove White Card Background Behind Mockup Preview
+## V10.5 - Remove White Card Background Behind Mockup Preview ✓
 
 ### Issue
-- [ ] White card/container background behind mockup preview looks cluttered
-- [ ] Want mockups to float directly on page background
-- [ ] Remove rectangular white background container
+- [x] White card/container background behind mockup preview looked cluttered
+- [x] Wanted mockups to float directly on page background
+- [x] Removed rectangular white background container
 
 ### Solution
-- [ ] Remove background-color from .portfolio-preview or parent container
-- [ ] Remove border-radius, padding, box-shadow from white card
-- [ ] Keep mockups floating cleanly on page background
-- [ ] Maintain lift + shadow hover effect
+- [x] Removed background-color: white from .portfolio section
+- [x] Mockups now float cleanly on page's natural light gray background
+- [x] No more white rectangular card container
+- [x] Maintained lift + shadow hover effect perfectly
 
 ### Testing
-- [ ] Test on dev server
-- [ ] Verify white background removed
-- [ ] Check all 4 portfolio items
-- [ ] Deploy to GitHub Pages
+- [x] Tested on dev server - clean minimalist look achieved
+- [x] Verified white background completely removed
+- [x] Checked all 4 portfolio items - all floating cleanly
+- [x] Deployed to GitHub Pages (offlinestudios.ca)
