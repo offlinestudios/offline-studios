@@ -765,3 +765,24 @@
 - [x] Confirmed case study link left-aligned correctly
 - [x] Tested all 4 portfolio items - all functional
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
+
+## V10.4 - Replace Dark Overlay with Lift + Shadow Animation
+
+### Issue
+- [ ] Dark overlay on hover is visually unappealing
+- [ ] Blocks view of mockup designs when hovering
+- [ ] Need better animation to indicate clickability
+
+### Solution: Lift + Shadow Effect
+- [ ] Remove dark semi-transparent overlay (.portfolio-overlay)
+- [ ] Implement lift animation: translateY(-8px) on hover
+- [ ] Enhanced shadow that grows beneath mockup
+- [ ] Keep subtle scale(1.03) for emphasis
+- [ ] Modern "floating card" effect
+- [ ] Mockups remain fully visible on hover
+
+### Testing
+- [ ] Test on dev server
+- [ ] Verify lift + shadow animation works smoothly
+- [ ] Check all 4 portfolio items
+- [ ] Deploy to GitHub Pages
