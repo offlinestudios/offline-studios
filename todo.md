@@ -743,24 +743,25 @@
 - [x] Checked all 4 portfolio items - working correctly
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
 
-## V10.3 - Clickable Mockups & Case Study Link Alignment
+## V10.3 - Clickable Mockups & Case Study Link Alignment ✓
 
 ### Make Mockup Containers Clickable
-- [ ] Wrap entire .device-mockup in clickable link
-- [ ] Remove "View Project" button from overlay
-- [ ] Add hover effects: scale (1.03-1.05x), glow, shadow
-- [ ] Change cursor to pointer on hover
-- [ ] Apply to all 4 portfolio items
+- [x] Wrapped entire .device-mockup in clickable <a class="device-mockup-link"> tags
+- [x] Replaced "View Project" button with "↗ View Live Site" hint text
+- [x] Added hover effects: scale(1.03), red glow shadow, smooth transitions
+- [x] Cursor changes to pointer on hover (automatic with <a> tag)
+- [x] Applied to all 4 portfolio items with correct URLs
 
 ### Align Case Study Link
-- [ ] Move "Read Full Case Study" link to align with portfolio title left edge
-- [ ] Should start at same position as "P" in "Passport Photo Toronto"
-- [ ] Keep on same horizontal line or directly below title
-- [ ] Maintain visual hierarchy
+- [x] Changed .testimonial from text-align: center to text-align: left
+- [x] Changed .testimonial-author from justify-content: center to flex-start
+- [x] Added padding-left: 0 to .testimonial-case-study-link
+- [x] "Read Full Case Study" now aligns with left edge of content
+- [x] Starts at same position as "Passport Photo Toronto" text
 
 ### Testing
-- [ ] Test clickable mockups on dev server
-- [ ] Verify hover effects work smoothly
-- [ ] Check case study link alignment
-- [ ] Test on all 4 portfolio items
-- [ ] Deploy to GitHub Pages
+- [x] Tested clickable mockups on dev server - all working
+- [x] Verified hover effects: scale + glow shadow working smoothly
+- [x] Confirmed case study link left-aligned correctly
+- [x] Tested all 4 portfolio items - all functional
+- [x] Deployed to GitHub Pages (offlinestudios.ca)
