@@ -742,3 +742,25 @@
 - [x] Verified overlay only covers mockup devices (much tighter fit)
 - [x] Checked all 4 portfolio items - working correctly
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
+
+## V10.3 - Clickable Mockups & Case Study Link Alignment
+
+### Make Mockup Containers Clickable
+- [ ] Wrap entire .device-mockup in clickable link
+- [ ] Remove "View Project" button from overlay
+- [ ] Add hover effects: scale (1.03-1.05x), glow, shadow
+- [ ] Change cursor to pointer on hover
+- [ ] Apply to all 4 portfolio items
+
+### Align Case Study Link
+- [ ] Move "Read Full Case Study" link to align with portfolio title left edge
+- [ ] Should start at same position as "P" in "Passport Photo Toronto"
+- [ ] Keep on same horizontal line or directly below title
+- [ ] Maintain visual hierarchy
+
+### Testing
+- [ ] Test clickable mockups on dev server
+- [ ] Verify hover effects work smoothly
+- [ ] Check case study link alignment
+- [ ] Test on all 4 portfolio items
+- [ ] Deploy to GitHub Pages
