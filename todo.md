@@ -806,3 +806,21 @@
 - [x] Verified white background completely removed
 - [x] Checked all 4 portfolio items - all floating cleanly
 - [x] Deployed to GitHub Pages (offlinestudios.ca)
+
+## V10.6 - Remove White Box Shadow & Fix Chart Background
+
+### Issues
+- [ ] White box/shadow still appears behind mockup preview
+- [ ] Chart "Visibility Growth" has black background instead of white
+
+### Solutions
+- [ ] Find and remove box-shadow or background causing white box behind mockups
+- [ ] Change chart background-color from black to white
+- [ ] Ensure mockups float cleanly without white container
+- [ ] Chart should match page design with white background
+
+### Testing
+- [ ] Test on dev server
+- [ ] Verify white box shadow removed from mockups
+- [ ] Verify chart has white background
+- [ ] Deploy to GitHub Pages

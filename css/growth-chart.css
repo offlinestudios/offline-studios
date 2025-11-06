@@ -215,27 +215,4 @@
   }
 }
 
-/* Dark mode support (optional) */
-@media (prefers-color-scheme: dark) {
-  .growth-chart {
-    background: #1a1a1a;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-  
-  .chart-title {
-    color: #ffffff;
-  }
-  
-  .chart-header {
-    border-bottom-color: #333;
-  }
-  
-  .bar-label {
-    color: #999;
-  }
-  
-  .chart-baseline {
-    border-top-color: #333;
-    color: #999;
-  }
-}
+/* Dark mode removed - always use white background for chart */
