@@ -1544,258 +1544,117 @@ section {
 }
 
 
-/* ===============================================
-   PATCH (2025-11-07): Remove red/white hover glow
-   Scope: Only mockup card on hover via link wrapper
-   Keeps: laptop base/stand shadows, pseudo-elements,
-          and any transform animations.
-   =============================================== */
-.device-mockup-link:hover .device-mockup,
-.device-mockup-link:focus .device-mockup {
-  /* completely remove hover shadow on the mockup card only */
-  box-shadow: none !important;
-}
-
-/* If a separate overlay element is used for glow, disable it on hover only */
-.device-mockup-link:hover .mockup-overlay,
-.device-mockup-link:focus .mockup-overlay,
-.device-mockup-link:hover .hover-glow,
-.device-mockup-link:focus .hover-glow {
-  box-shadow: none !important;
-  background: transparent !important;
-  filter: none !important;
-}
-
-
-
-/* ===============================================
-   PATCH (2025-11-07): Mobile alignment for mockups & buttons
-   Fixes: mockup card centering and CTA alignment on <=768px
-   =============================================== */
-@media (max-width: 768px) {
-  /* Ensure single-column grid and center children */
-  .portfolio-grid, .portfolio-grid-reverse {
-    grid-template-columns: 1fr;
-    justify-items: center;   /* center grid items */
-  }
-
-  /* Center the text column content and buttons */
-  .portfolio-content {
-    align-items: center;
-    text-align: center;
-  }
-  .portfolio-content .btn,
-  .portfolio-cta .btn {
-    align-self: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 320px;    /* keeps a nice mobile width */
-  }
-
-  /* Center the mockup link + limit width */
-  .portfolio-preview,
-  .device-mockup-link,
-  .device-mockup {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 460px;    /* prevents overflow on small screens */
-    width: 100%;
-  }
-
-  /* Avoid stray transforms/offsets on small screens */
-  .device-mockup-link {
-    transform: none !important;
-  }
-}
-
-
-
 /* =====================================================
-   PATCH (2025-11-07): Portfolio spacing & alignment
-   - Increase column gap on desktop/tablet so text & mockups
-     don't feel crowded.
-   - Increase vertical row gap on mobile so they don't feel
-     too far apart or misaligned.
+   PATCH (2025-11-07): Case Study Visual Refinements
+   - Smooth hero/section transition
+   - Challenges cards: icons + hover affordance
+   - CTA banner: improved color balance
+   - Consistent section spacing
+   Non-destructive: additive selectors/fallbacks
    ===================================================== */
 
-/* Base: reasonable defaults */
-.portfolio-grid,
-.portfolio-grid-reverse {
-  display: grid;
-  grid-auto-rows: minmax(min-content, max-content);
-  align-items: center;
-  row-gap: 24px;
-  column-gap: 48px;
+/* 1) HERO / TOP BANNER — match the light grey section for continuity */
+.case-hero, .case-header, .case-study-hero, .case-title-band {
+  background-color: #f9fafb; /* match body grey */
+  padding-top: 120px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Ensure each project row (section) has consistent vertical rhythm */
-.portfolio-section {
-  padding-top: 72px;
-  padding-bottom: 72px;
+/* 2) CHALLENGES — icons & hover */
+.challenges, .case-challenges { }
+.challenges .card, .case-challenges .card, .challenge-card {
+  position: relative;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.challenges .card:hover, .case-challenges .card:hover, .challenge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.06);
 }
 
-/* Desktop ≥ 1024px: more breathing room horizontally */
-@media (min-width: 1024px) {
-  .portfolio-grid,
-  .portfolio-grid-reverse {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 96px; /* more room between text and mockup */
-    row-gap: 24px;
-  }
-  .portfolio-section {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
-}
-
-/* Tablet 768–1023px: moderate gap */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .portfolio-grid,
-  .portfolio-grid-reverse {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 64px;
-    row-gap: 24px;
-  }
-  .portfolio-section {
-    padding-top: 84px;
-    padding-bottom: 84px;
-  }
-}
-
-/* Mobile ≤ 767px: single column, tighter but consistent spacing */
-@media (max-width: 767px) {
-  .portfolio-grid,
-  .portfolio-grid-reverse {
-    grid-template-columns: 1fr;
-    justify-items: center;      /* center mockup/text blocks */
-    row-gap: 40px;              /* enough space, but not huge */
-  }
-
-  /* Keep mockups centered and sized well */
-  .portfolio-preview,
-  .device-mockup-link,
-  .device-mockup {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 460px;
-    width: 100%;
-  }
-
-  /* Center text + buttons on mobile */
-  .portfolio-content {
-    align-items: center;
-    text-align: center;
-  }
-  .portfolio-content .btn,
-  .portfolio-cta .btn {
-    align-self: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .portfolio-section {
-    padding-top: 56px;
-    padding-bottom: 56px;
-  }
-}
-
-/* Safety: when mockups scale on hover, avoid overlap by providing space */
-@media (min-width: 768px) {
-  .device-mockup-link:hover .device-mockup {
-    transform-origin: center;
-  }
-}
-
-
-
-/* =====================================================
-   PATCH (2025-11-07): Testimonial layout & CTA alignment
-   - Left-align long quote text for readability
-   - Constrain width for better rhythm
-   - Group attribution (avatar + name) neatly
-   - Pull CTA closer to the quote/attribution
-   - Non-destructive: applies to common testimonial classes
-   ===================================================== */
-
-.testimonial,
-.testimonial-section,
-.client-testimonial,
-.customer-testimonial,
-.section-testimonial {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-/* Left-align and space the quote */
-.testimonial blockquote,
-.testimonial-quote,
-.testimonial-section blockquote,
-.client-testimonial blockquote,
-.section-testimonial blockquote {
-  text-align: left;
-  font-style: italic;
-  line-height: 1.6;
-  margin: 0 0 28px 0;   /* tighten space below quote */
-}
-
-/* Attribution row: avatar + name aligned */
-.testimonial-meta,
-.client-testimonial .meta,
-.section-testimonial .meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 20px 0;   /* quote -> meta spacing */
-}
-
-/* Name & sublabel stacking */
-.testimonial-meta .name,
-.client-testimonial .meta .name,
-.section-testimonial .meta .name {
-  font-weight: 600;
-}
-
-.testimonial-meta .sub,
-.client-testimonial .meta .sub,
-.section-testimonial .meta .sub {
-  color: var(--muted, #6b7280);
-}
-
-/* CTA: place directly under meta, make it feel clickable */
-.testimonial-cta,
-.client-testimonial .cta,
-.section-testimonial .cta {
-  margin-top: 0;        /* sit close to meta */
-}
-
-.testimonial-cta a,
-.client-testimonial .cta a,
-.section-testimonial .cta a {
+.challenge-card .icon,
+.challenges .card .icon,
+.case-challenges .card .icon {
+  color: #dc143c;           /* brand red accent */
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 12px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  text-decoration: none;
+  justify-content: center;
 }
 
-.testimonial-cta a:hover,
-.client-testimonial .cta a:hover,
-.section-testimonial .cta a:hover {
-  text-decoration: underline;
+/* Lucide icon compatibility */
+.challenge-card .icon svg,
+.challenges .card .icon svg,
+.case-challenges .card .icon svg {
+  width: 24px; height: 24px;
+  stroke-width: 1.75;
 }
 
-/* Wide screens: optional split layout if right column exists */
-@media (min-width: 1024px) {
-  .testimonial-wrap {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 48px;
-    align-items: start;
+/* Optional subtle badge circle behind icon */
+.challenge-card .icon::before,
+.challenges .card .icon::before,
+.case-challenges .card .icon::before {
+  content: "";
+  position: absolute;
+  width: 36px; height: 36px;
+  border-radius: 999px;
+  background: rgba(220, 20, 60, 0.06);
+  transform: translate(-6px, -6px);
+  z-index: -1;
+}
+
+/* 3) CTA BANNER — calmer background with brand button */
+/* Choose one: we implement Option A (muted tint) by default */
+.case-cta, .cta-banner, .case-study-cta {
+  background-color: #fde8ec; /* muted rose tint */
+  color: #111827;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  text-align: center;
+}
+.case-cta .btn, .cta-banner .btn, .case-study-cta .btn {
+  background-color: #dc143c;
+  color: #fff;
+  border: none;
+}
+.case-cta .btn:hover, .cta-banner .btn:hover, .case-study-cta .btn:hover {
+  background-color: #b30e30;
+}
+
+/* Alternative themes (uncomment one if preferred) */
+/* -- Option B: minimalist white with red button --
+.case-cta, .cta-banner, .case-study-cta { background:#fff; border-top:1px solid rgba(0,0,0,.05); color:#111827; }
+*/
+/* -- Option C: dark navy with red button --
+.case-cta, .cta-banner, .case-study-cta { background:#111827; color:#fff; }
+.case-cta .btn, .cta-banner .btn, .case-study-cta .btn { background:#dc143c; color:#fff; }
+*/
+
+/* 4) CONSISTENT SECTION SPACING */
+.case-section, .case-block {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+@media (max-width: 768px) {
+  .case-section, .case-block {
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
-  .testimonial-right { align-self: start; }
+}
+
+/* 5) TYPOGRAPHY TWEAKS FOR CASE PAGES */
+.case-intro p, .case-summary p { 
+  max-width: 68ch; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+/* 6) Ensure cards have consistent radius and border in case pages */
+.case-section .card, .case-cards .card, .challenge-card {
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 16px;
+  background: #fff;
 }
 
