@@ -1707,3 +1707,95 @@ section {
   }
 }
 
+
+
+/* =====================================================
+   PATCH (2025-11-07): Testimonial layout & CTA alignment
+   - Left-align long quote text for readability
+   - Constrain width for better rhythm
+   - Group attribution (avatar + name) neatly
+   - Pull CTA closer to the quote/attribution
+   - Non-destructive: applies to common testimonial classes
+   ===================================================== */
+
+.testimonial,
+.testimonial-section,
+.client-testimonial,
+.customer-testimonial,
+.section-testimonial {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Left-align and space the quote */
+.testimonial blockquote,
+.testimonial-quote,
+.testimonial-section blockquote,
+.client-testimonial blockquote,
+.section-testimonial blockquote {
+  text-align: left;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0 0 28px 0;   /* tighten space below quote */
+}
+
+/* Attribution row: avatar + name aligned */
+.testimonial-meta,
+.client-testimonial .meta,
+.section-testimonial .meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px 0;   /* quote -> meta spacing */
+}
+
+/* Name & sublabel stacking */
+.testimonial-meta .name,
+.client-testimonial .meta .name,
+.section-testimonial .meta .name {
+  font-weight: 600;
+}
+
+.testimonial-meta .sub,
+.client-testimonial .meta .sub,
+.section-testimonial .meta .sub {
+  color: var(--muted, #6b7280);
+}
+
+/* CTA: place directly under meta, make it feel clickable */
+.testimonial-cta,
+.client-testimonial .cta,
+.section-testimonial .cta {
+  margin-top: 0;        /* sit close to meta */
+}
+
+.testimonial-cta a,
+.client-testimonial .cta a,
+.section-testimonial .cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.testimonial-cta a:hover,
+.client-testimonial .cta a:hover,
+.section-testimonial .cta a:hover {
+  text-decoration: underline;
+}
+
+/* Wide screens: optional split layout if right column exists */
+@media (min-width: 1024px) {
+  .testimonial-wrap {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .testimonial-right { align-self: start; }
+}
+
