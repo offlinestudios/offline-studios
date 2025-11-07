@@ -1613,4 +1613,61 @@ section {
     max-width: 320px;
   }
 }
+/* === Kill the white backplate / pink halo ONLY inside project previews === */
 
+/* 1) If the plate is drawn on the preview wrapper itself */
+.portfolio-preview {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+.portfolio-preview::before,
+.portfolio-preview::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* 2) If a sibling/helper element is used as the plate */
+.portfolio-preview > .preview-backplate,
+.portfolio-preview > .mockup-backplate,
+.portfolio-preview > .preview-bg,
+.portfolio-preview > .mockup-shadow,
+.portfolio-preview > .device-shadow,
+.portfolio-preview > .preview-shadow {
+  display: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* 3) If the plate is an anonymous absolutely-positioned child */
+.portfolio-preview > div[style*="position:absolute"],
+.portfolio-preview > section[style*="position:absolute"],
+.portfolio-preview > figure[style*="position:absolute"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* 4) Belt & suspenders: strip any pseudo-plates on immediate children,
+      but DO NOT touch the actual device mockups */
+.portfolio-preview > *:not(.device-mockup):not(.device-mockup-link)::before,
+.portfolio-preview > *:not(.device-mockup):not(.device-mockup-link)::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+/* 5) Ensure the mockups themselves keep rendering normally */
+.portfolio-preview .device-mockup,
+.portfolio-preview .device-mockup-link .device-mockup {
+  background: transparent !important;   /* in case the "screen" got a white fill */
+  /* keep your normal depth if you have one; remove glow-only */
+  box-shadow: none !important;          /* remove any glow the theme might add */
+  filter: none !important;              /* remove drop-shadow filters used as halo */
+}
