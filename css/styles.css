@@ -1542,3 +1542,76 @@ section {
         font-size: 1.5rem;
     }
 }
+
+
+/* =============================
+   HOTFIX (2025-11-07): Remove mockup hover glow/white box
+   Appended by ChatGPT at the end of styles.css
+   ============================= */
+
+.device-mockup-link:hover,
+.device-mockup-link:focus,
+.device-mockup-link:active {
+  transform: none !important;
+}
+
+/* Remove any hover shadows or outlines behind mockups */
+.device-mockup-link:hover .device-mockup,
+.device-mockup-link:focus .device-mockup,
+.device-mockup-link:active .device-mockup,
+.project-mockup:hover,
+.project-mockup:focus,
+.project-mockup:active {
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+  border-color: transparent !important;
+}
+
+/* Catch-alls for classes containing 'mockup' */
+.device-mockup,
+.project-mockup,
+[class*="mockup"],
+[class*="Mockup"] {
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Disable pseudo-layer glow/overlays if used */
+.device-mockup::before,
+.device-mockup::after,
+.project-mockup::before,
+.project-mockup::after,
+[class*="mockup"]::before,
+[class*="mockup"]::after {
+  box-shadow: none !important;
+  filter: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+/* Remove white screen blocks if defined */
+.phone-screen,
+.laptop-screen,
+.laptop-display,
+.device-screen,
+.mockup-screen,
+.screen,
+.display {
+  background: transparent !important;
+}
+
+/* Prevent mobile tap highlight flash */
+.device-mockup-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep images clean (no background/shadow) */
+.device-mockup img,
+.project-mockup img,
+[class*="mockup"] img {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
