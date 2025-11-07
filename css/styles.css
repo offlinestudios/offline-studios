@@ -1752,3 +1752,51 @@ section {
   background: #f9fafb !important;
   border-bottom: 0 !important;
 }
+/* Normalize the Challenges grid */
+.case-study-section-simple .challenge-grid-simple{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+  align-items:start;
+}
+@media (max-width:1024px){
+  .case-study-section-simple .challenge-grid-simple{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+  }
+}
+@media (max-width:640px){
+  .case-study-section-simple .challenge-grid-simple{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+}
+
+/* Kill any “wide” spans left by older styles */
+.case-study-section-simple .challenge-grid-simple > *{
+  grid-column:auto !important;
+  min-width:0;           /* prevent overflow forcing a wrap */
+  margin:0 !important;   /* remove stray margins that can break the grid */
+}
+
+/* If you have any named wide class, neutralize it */
+.challenge-card--wide,
+.challenge-card-simple.wide{
+  grid-column:auto !important;
+}
+
+/* Make each card consistent */
+.challenge-card-simple{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  background:#fff;
+  border:1px solid rgba(17,24,39,.08);
+  border-radius:16px;
+  box-shadow:none;
+  padding:24px;
+  box-sizing:border-box;
+}
+.challenge-card-simple .icon{margin-bottom:12px;line-height:1;}
+.challenge-card-simple h3{margin:0 0 8px 0;}
+.challenge-card-simple p{margin:0;}
