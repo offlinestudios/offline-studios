@@ -1566,3 +1566,45 @@ section {
   filter: none !important;
 }
 
+
+
+/* ===============================================
+   PATCH (2025-11-07): Mobile alignment for mockups & buttons
+   Fixes: mockup card centering and CTA alignment on <=768px
+   =============================================== */
+@media (max-width: 768px) {
+  /* Ensure single-column grid and center children */
+  .portfolio-grid, .portfolio-grid-reverse {
+    grid-template-columns: 1fr;
+    justify-items: center;   /* center grid items */
+  }
+
+  /* Center the text column content and buttons */
+  .portfolio-content {
+    align-items: center;
+    text-align: center;
+  }
+  .portfolio-content .btn,
+  .portfolio-cta .btn {
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 320px;    /* keeps a nice mobile width */
+  }
+
+  /* Center the mockup link + limit width */
+  .portfolio-preview,
+  .device-mockup-link,
+  .device-mockup {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 460px;    /* prevents overflow on small screens */
+    width: 100%;
+  }
+
+  /* Avoid stray transforms/offsets on small screens */
+  .device-mockup-link {
+    transform: none !important;
+  }
+}
+
