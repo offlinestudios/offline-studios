@@ -7,7 +7,7 @@
 
 :root {
     /* Colors */
-    --color-primary: #DC143C;
+    --color-primary: #00000000;
     --color-primary-hover: #B01030;
     --color-text: #0A0A0A;
     --color-text-muted: #6B7280;
@@ -444,7 +444,7 @@ section {
 }
 
 .device-mockup-link:hover .device-mockup {
-    box-shadow: 0 24px 48px rgba(220, 20, 60, 0.2), 
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0), 
                 0 12px 24px rgba(0, 0, 0, 0.15),
                 0 6px 12px rgba(0, 0, 0, 0.1);
 }
@@ -456,7 +456,7 @@ section {
     position: relative;
     z-index: 11;
     pointer-events: auto;
-    background-color: #DC143C !important; /* Force red background */
+    background-color: #00000000 !important; /* Force red background */
     color: white !important; /* Force white text */
     box-shadow: 0 4px 20px rgba(220, 20, 60, 0.5);
     font-weight: 600;
@@ -1542,3 +1542,54 @@ section {
         font-size: 1.5rem;
     }
 }
+
+
+/* =====================================================
+   EDIT (2025-11-07): Landing page tweaks
+   - Remove mockup hover glow within landing wrappers
+   - Mobile centering for mockups & CTAs (≤768px)
+   ===================================================== */
+.home .device-mockup-link:hover .device-mockup,
+.home .device-mockup-link:focus .device-mockup,
+.home .device-mockup-link:active .device-mockup,
+.landing .device-mockup-link:hover .device-mockup,
+.landing .device-mockup-link:focus .device-mockup,
+.landing .device-mockup-link:active .device-mockup,
+.work .device-mockup-link:hover .device-mockup,
+.work .device-mockup-link:focus .device-mockup,
+.work .device-mockup-link:active .device-mockup {
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+@media (max-width: 768px) {
+  .home .portfolio-grid, .home .work-grid, .home .projects-grid,
+  .landing .portfolio-grid, .landing .work-grid, .landing .projects-grid,
+  .work .portfolio-grid, .work .work-grid, .work .projects-grid {
+    justify-items: center;
+    row-gap: 40px;
+  }
+  .home .portfolio-preview, .home .device-mockup-link, .home .device-mockup,
+  .landing .portfolio-preview, .landing .device-mockup-link, .landing .device-mockup,
+  .work .portfolio-preview, .work .device-mockup-link, .work .device-mockup {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 460px;
+    width: 100%;
+    transform: none !important;
+  }
+  .home .portfolio-content, .landing .portfolio-content, .work .portfolio-content {
+    text-align: center;
+    align-items: center;
+  }
+  .home .portfolio-content .btn, .home .portfolio-cta .btn,
+  .landing .portfolio-content .btn, .landing .portfolio-cta .btn,
+  .work .portfolio-content .btn, .work .portfolio-cta .btn {
+    display: inline-flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
