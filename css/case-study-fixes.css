@@ -1,0 +1,75 @@
+
+/* =====================================================
+   CASE STUDY FIXES — safe, append-only overrides
+   Targets: .case-study-hero-simple, .case-study-section-simple,
+            .challenge-grid-simple, .challenge-card-simple,
+            .case-study-cta-simple
+   ===================================================== */
+
+/* 1) HERO: match the next section and remove the bottom line */
+.case-study-hero-simple {
+  background: #f9fafb !important;
+  border-bottom: 0 !important;
+  padding-top: 120px;
+  padding-bottom: 64px;
+}
+
+/* 2) CHALLENGES: fix grid + card alignment */
+.case-study-section-simple .challenge-grid-simple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+@media (max-width: 1024px) {
+  .case-study-section-simple .challenge-grid-simple {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .case-study-section-simple .challenge-grid-simple {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Ensure each card occupies one cell and stretches */
+.challenge-grid-simple > .challenge-card-simple {
+  grid-column: auto !important;
+  width: 100%;
+}
+.challenge-card-simple {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 24px;
+  box-sizing: border-box;
+}
+.challenge-card-simple .icon { margin-bottom: 12px; line-height: 1; }
+.challenge-card-simple h3 { margin: 0 0 8px 0; }
+.challenge-card-simple p { margin: 0; }
+
+/* 3) CTA: remove red band; grey section with white rounded card */
+.case-study-cta-simple {
+  background: #f9fafb !important;
+  color: #111827;
+  padding: 80px 0;
+}
+.case-study-cta-simple .cta-content-simple {
+  max-width: 740px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 16px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+}
+.case-study-cta-simple .btn { background-color: #dc143c; color: #ffffff; border: 0; }
+.case-study-cta-simple .btn:hover { background-color: #b30e30; }
