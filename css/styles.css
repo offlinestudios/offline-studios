@@ -1613,4 +1613,17 @@ section {
     max-width: 320px;
   }
 }
-
+/* Remove white backplate / glow behind project preview mockups */
+.device-mockup::before,
+.device-mockup::after,
+.project-preview::before,
+.project-preview::after,
+.preview-backdrop,
+.mockup-background,
+.mockup-shadow,
+.device-shadow,
+.preview-shadow {
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
