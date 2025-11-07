@@ -1800,3 +1800,59 @@ section {
 .challenge-card-simple .icon{margin-bottom:12px;line-height:1;}
 .challenge-card-simple h3{margin:0 0 8px 0;}
 .challenge-card-simple p{margin:0;}
+/* ===== Mobile fixes for the portfolio/project slice (≤768px) ===== */
+@media (max-width: 768px) {
+  /* Force single-column layout */
+  .portfolio-grid,
+  .work-grid,
+  .projects-grid,
+  .portfolio-row,
+  .project-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+  }
+
+  /* Copy/content block */
+  .portfolio-content,
+  .project-copy {
+    order: 1;
+    text-align: center !important;
+    padding: 0 16px !important;
+  }
+
+  /* Mockup block */
+  .portfolio-preview,
+  .device-mockup-link,
+  .device-mockup,
+  .device-mockup-group {
+    order: 2;
+    width: 100% !important;
+    max-width: 460px !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    position: static !important;
+  }
+
+  /* Kill any decorative backplate on mobile */
+  .preview-backplate,
+  .mockup-backplate,
+  .preview-bg,
+  .mockup-shadow,
+  .device-shadow {
+    display: none !important;
+  }
+
+  /* Feature/badge boxes: stack vertically */
+  .feature-badges,
+  .badge-grid,
+  .metrics-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+/* Safety: prevent any min-width from locking desktop layout on small screens */
+html, body { min-width: 0 !important; }
