@@ -1856,3 +1856,69 @@ section {
 
 /* Safety: prevent any min-width from locking desktop layout on small screens */
 html, body { min-width: 0 !important; }
+/* ===== Mobile mockup positioning fix (≤768px) ===== */
+@media (max-width: 768px) {
+  /* Make the preview area a vertical stack */
+  .portfolio-preview,
+  .device-mockup-group {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Phone first, centered */
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    order: 1 !important;
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    z-index: 1 !important;
+    max-width: 360px !important;
+    width: 100% !important;
+  }
+
+  /* Laptop below the phone, no absolute offsets */
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop {
+    order: 2 !important;
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 540px !important;   /* adjust if you want smaller */
+    width: 100% !important;
+    z-index: 0 !important;
+  }
+
+  /* Kill any negative margins or decorative layers that push layout */
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop,
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .preview-backplate,
+  .mockup-backplate,
+  .preview-bg,
+  .mockup-shadow,
+  .device-shadow {
+    display: none !important;
+  }
+}
+
+/* Optional: on very small screens you can hide the laptop entirely */
+@media (max-width: 420px) {
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop { display: none !important; }
+}
