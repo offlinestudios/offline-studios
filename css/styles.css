@@ -1964,3 +1964,54 @@ html, body { min-width: 0 !important; }
     z-index: 0 !important;
   }
 }
+/* ===== Fix mobile overlap: mockup vs. heading/badges (≤768px) ===== */
+@media (max-width: 768px) {
+  /* Let the mockup wrapper size to its content and stop absolute offsets */
+  .portfolio-preview,
+  .device-mockup-group {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+    margin: 0 auto 24px !important;  /* bottom space so it doesn't touch text */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    z-index: 1 !important;
+  }
+
+  /* Phone device: no absolute / translate; keep it centered */
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 420px !important;
+    width: 100% !important;
+  }
+
+  /* Ensure the content below starts a new flow and doesn’t creep under the mockup */
+  .portfolio-content,
+  .project-copy,
+  .section-body,
+  .feature-badges,
+  .badge-grid,
+  .metrics-grid {
+    position: relative !important;
+    z-index: 0 !important;
+    margin-top: 12px !important;
+    clear: both !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Defensive: stop any negative margins from desktop styles */
+  .feature-badges > *,
+  .badge-grid > *,
+  .metrics-grid > * {
+    margin: 0 !important;
+  }
+}
