@@ -2015,3 +2015,152 @@ html, body { min-width: 0 !important; }
     margin: 0 !important;
   }
 }
+
+
+
+/* =========================================================
+   OFFLINE STUDIOS — PATCH (2025-11-08)
+   Append-only overrides to stabilize layout on mobile/CS pages.
+   ========================================================= */
+
+/* A) Hide decorative backplates/halos behind devices (all pages) */
+.mockup-backplate,
+.preview-backplate,
+.preview-bg,
+.device-backplate,
+.mockup-shadow,
+.device-shadow { display: none !important; }
+
+/* Ensure badge text always renders */
+.feature-badge .badge-title,
+.feature-badge strong,
+.feature-badge h4,
+.feature-badge .badge-text,
+.feature-badge p { display: block !important; visibility: visible !important; opacity: 1 !important; }
+
+/* Narrow the 'nuke' to the known decorative node only */
+.portfolio-preview > .preview-backplate {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  display: none !important;
+}
+
+/* B) CONSOLIDATED MOBILE MOCKUP RULES (≤768px) */
+@media (max-width: 768px) {
+  /* One-column layout for the project slice */
+  .portfolio-grid, .portfolio-grid-reverse {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+  }
+
+  /* Content first, mockups second */
+  .portfolio-content { order: 1 !important; text-align: center !important; }
+  .portfolio-preview  { order: 2 !important; }
+
+  /* Phone only on mobile; hide laptop */
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop { display: none !important; }
+
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 420px !important;
+    width: 100% !important;
+    z-index: 1 !important;
+  }
+
+  /* Center the preview stack and add breathing room */
+  .portfolio-preview,
+  .device-mockup-group {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+    margin: 0 auto 24px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure content below starts cleanly (no overlap) */
+  .portfolio-content,
+  .project-copy,
+  .section-body,
+  .feature-badges,
+  .badge-grid,
+  .metrics-grid {
+    position: relative !important;
+    z-index: 0 !important;
+    margin-top: 12px !important;
+    clear: both !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .feature-badges > *,
+  .badge-grid > *,
+  .metrics-grid > * { margin: 0 !important; }
+}
+
+/* C) CASE STUDY — CHALLENGES GRID NORMALIZATION */
+.case-study-section-simple .challenge-grid-simple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .case-study-section-simple .challenge-grid-simple {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .case-study-section-simple .challenge-grid-simple {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+.case-study-section-simple .challenge-grid-simple > * {
+  grid-column: auto !important;
+  min-width: 0;
+  margin: 0 !important;
+}
+.challenge-card-simple {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,.08);
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 24px;
+  box-sizing: border-box;
+}
+.challenge-card-simple .icon { margin-bottom: 12px; line-height: 1; }
+.challenge-card-simple h3 { margin: 0 0 8px 0; }
+.challenge-card-simple p  { margin: 0; }
+
+/* D) CASE STUDY — CTA ON LIGHT BACKGROUND */
+.case-study-cta-simple { background: #f9fafb !important; padding: 80px 0; }
+.case-study-cta-simple .cta-content-simple {
+  max-width: 740px; margin: 0 auto; background: #fff;
+  border: 1px solid rgba(17,24,39,.08); border-radius: 16px;
+  padding: 40px 32px; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,.04);
+}
+.case-study-cta-simple h1,
+.case-study-cta-simple h2,
+.case-study-cta-simple h3,
+.case-study-cta-simple p,
+.case-study-cta-simple .cta-title,
+.case-study-cta-simple .cta-lead { color: #111827 !important; }
+.case-study-cta-simple .btn { background-color: #dc143c; color:#fff; border:0; }
+.case-study-cta-simple .btn:hover { background-color: #b30e30; }
