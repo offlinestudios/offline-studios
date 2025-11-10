@@ -1074,47 +1074,46 @@ section {
     
     /* Mobile portfolio improvements - V7.5 with Grid Areas */
     
-    /* MOBILE FIX: Simplified grid without template areas */
+    /* MOBILE: Vertical stacking layout */
     .portfolio-grid,
     .portfolio-grid-reverse {
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-lg);
-        padding: var(--spacing-lg) var(--spacing-md);
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
     }
     
-    /* MOBILE FIX: Direct styling without grid areas */
+    /* MOBILE: Content wrapper for title, description, and features */
     .portfolio-content {
         display: flex;
         flex-direction: column;
         gap: var(--spacing-md);
         order: 1;
-        padding: 0 var(--spacing-sm);
     }
     
     .portfolio-title {
         font-size: 1.75rem;
         font-weight: 800;
-        text-align: center;
+        text-align: left;
         line-height: 1.2;
         letter-spacing: -0.02em;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
     }
     
     .portfolio-description {
-        font-size: 0.9375rem;
+        font-size: 0.875rem;
         line-height: 1.6;
-        text-align: center;
+        text-align: left;
         color: #6B7280;
-        max-width: 90%;
-        margin: 0 auto 0.5rem;
+        margin: 0;
     }
     
+    /* MOBILE: Feature cards side-by-side */
     .portfolio-features {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-        margin: 0.5rem 0 0;
+        gap: 0.625rem;
+        margin: 0;
     }
     
     .portfolio-features li {
@@ -1148,9 +1147,7 @@ section {
     }
     
     .portfolio-preview {
-        min-height: 320px;
         height: auto;
-        margin: var(--spacing-lg) 0;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1159,38 +1156,30 @@ section {
         padding: var(--spacing-md) 0;
     }
     
-    /* Smaller device mockups on mobile - centered */
+    /* MOBILE: Phone mockup centered below cards */
     .device-mockup {
         width: 100%;
-        max-width: 280px;
+        max-width: 240px;
         height: auto;
-        transform: scale(0.85);
+        transform: scale(0.9);
         transform-origin: center center;
         margin: 0 auto;
-        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
+        filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
     }
     
+    /* Hide laptop on mobile, show only phone */
+    .device-laptop {
+        display: none;
+    }
+    
+    .device-phone {
+        position: static !important;
+        transform: none !important;
+    }
+    
+    /* MOBILE: Hide View Project button (not present on desktop) */
     .portfolio-cta {
-        margin: var(--spacing-md) 0 var(--spacing-lg);
-        display: block;
-        text-align: center;
-        order: 3;
-        padding: 0 var(--spacing-md);
-    }
-    
-    .portfolio-cta .btn {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 280px;
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        font-weight: 700;
-        box-shadow: 0 4px 14px rgba(220, 20, 60, 0.25);
-    }
-    
-    .portfolio-cta .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(220, 20, 60, 0.35);
+        display: none;
     }
     
     /* MOBILE FIX: portfolio-content already styled above */
@@ -2244,83 +2233,23 @@ html, body { min-width: 0 !important; }
   .work-hero figure.device {
     position: static !important;      /* no absolute anchoring on mobile */
     inset: auto !important;
-    transform: none !important;
-    width: min(82vw, 340px) !important;
-    margin: 24px auto 0 !important;   /* center under cards */
-    z-index: 1;
-  }
-  .work-hero .device-mockup img,
-  .work-hero .phone-mockup img,
-  .work-hero .mockup img,
-  .work-hero figure.device img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
 
-  /* 5) Kill any decorative “halo/backplate” that intrudes on text */
-  .work-hero .decor,
-  .work-hero .backplate,
-  .work-hero .glow,
-  .work-hero .orb {
-    display: none !important;
-  }
-}
-
-/* MOBILE FIX: Extra small devices */
+/* MOBILE: Extra small devices (single column cards) */
 @media (max-width: 420px) {
-    .portfolio-features {
-        grid-template-columns: 1fr;
-    }
-    
-    .device-mockup {
-        transform: scale(0.8);
-        max-width: 300px;
-    }
-    
-    .portfolio-preview {
-        min-height: 240px;
-    }
-}
-
-/* MOBILE FIX: Extra small devices - enhanced */
-@media (max-width: 420px) {
-    .portfolio-grid,
-    .portfolio-grid-reverse {
-        padding: var(--spacing-md);
-    }
-    
     .portfolio-title {
         font-size: 1.5rem;
     }
     
     .portfolio-description {
-        font-size: 0.875rem;
-        max-width: 95%;
+        font-size: 0.8125rem;
     }
     
     .portfolio-features {
         grid-template-columns: 1fr;
-        gap: 0.625rem;
-    }
-    
-    .portfolio-features li {
-        padding: 0.875rem;
     }
     
     .device-mockup {
-        transform: scale(0.75);
-        max-width: 260px;
-    }
-    
-    .portfolio-preview {
-        min-height: 280px;
-        margin: var(--spacing-md) 0;
-    }
-    
-    .portfolio-cta .btn {
-        max-width: 100%;
-        padding: 0.875rem 1.5rem;
-        font-size: 0.9375rem;
+        max-width: 220px;
+        transform: scale(0.85);
     }
 }
