@@ -1074,35 +1074,34 @@ section {
     
     /* Mobile portfolio improvements - V7.5 with Grid Areas */
     
-    /* Use CSS Grid with template areas for clean mobile layout */
-    .portfolio-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "title"
-            "description"
-            "stats"
-            "mockups"
-            "button";
+    /* MOBILE FIX: Simplified grid without template areas */
+    .portfolio-grid,
+    .portfolio-grid-reverse {
+        display: flex;
+        flex-direction: column;
         gap: var(--spacing-md);
     }
     
-    /* Assign grid areas to each element */
+    /* MOBILE FIX: Direct styling without grid areas */
+    .portfolio-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        order: 1;
+    }
+    
     .portfolio-title {
-        grid-area: title;
         font-size: 1.5rem;
         text-align: center;
     }
     
     .portfolio-description {
-        grid-area: description;
         font-size: 1rem;
         line-height: 1.5;
         text-align: center;
     }
     
     .portfolio-features {
-        grid-area: stats;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-sm);
@@ -1132,7 +1131,6 @@ section {
     }
     
     .portfolio-preview {
-        grid-area: mockups;
         min-height: 280px;
         height: auto;
         margin: var(--spacing-md) 0;
@@ -1154,7 +1152,6 @@ section {
     }
     
     .portfolio-cta {
-        grid-area: button;
         margin: var(--spacing-md) 0;
         display: block;
         text-align: center;
@@ -1165,13 +1162,7 @@ section {
         margin: 0 auto;
     }
     
-    /* MOBILE FIX: Use proper grid layout instead of display:contents */
-    .portfolio-content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
-        order: 1;
-    }
+    /* MOBILE FIX: portfolio-content already styled above */
     
     /* Hero visual height set above at line ~906 (520px) - removed duplicate */
     
@@ -1812,10 +1803,383 @@ section {
 .challenge-card-simple h3{margin:0 0 8px 0;}
 .challenge-card-simple p{margin:0;}
 /* ===== Mobile fixes for the portfolio/project slice (≤768px) ===== */
+@media (max-width: 768px) {
+  /* Force single-column layout */
+  .portfolio-grid,
+  .work-grid,
+  .projects-grid,
+  .portfolio-row,
+  .project-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+  }
+
+  /* Copy/content block */
+  .portfolio-content,
+  .project-copy {
+    order: 1;
+    text-align: center !important;
+    padding: 0 16px !important;
+  }
+
+  /* Mockup block */
+  .portfolio-preview,
+  .device-mockup-link,
+  .device-mockup,
+  .device-mockup-group {
+    order: 2;
+    width: 100% !important;
+    max-width: 460px !important;
+    margin: 0 auto !important;
+    transform: none !important;
+    position: static !important;
+  }
+
+  /* Kill any decorative backplate on mobile */
+  .preview-backplate,
+  .mockup-backplate,
+  .preview-bg,
+  .mockup-shadow,
+  .device-shadow {
+    display: none !important;
+  }
+
+  /* Feature/badge boxes: stack vertically */
+  .feature-badges,
+  .badge-grid,
+  .metrics-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+/* Safety: prevent any min-width from locking desktop layout on small screens */
+html, body { min-width: 0 !important; }
+/* ===== Mobile mockup positioning fix (≤768px) ===== */
+@media (max-width: 768px) {
+  /* Make the preview area a vertical stack */
+  .portfolio-preview,
+  .device-mockup-group {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Phone first, centered */
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    order: 1 !important;
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    z-index: 1 !important;
+    max-width: 360px !important;
+    width: 100% !important;
+  }
+
+  /* Laptop below the phone, no absolute offsets */
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop {
+    order: 2 !important;
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 540px !important;   /* adjust if you want smaller */
+    width: 100% !important;
+    z-index: 0 !important;
+  }
+
+  /* Kill any negative margins or decorative layers that push layout */
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop,
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .preview-backplate,
+  .mockup-backplate,
+  .preview-bg,
+  .mockup-shadow,
+  .device-shadow {
+    display: none !important;
+  }
+}
+
+/* Optional: on very small screens you can hide the laptop entirely */
+@media (max-width: 420px) {
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop { display: none !important; }
+}
+/* Mobile-only mockup: show phone, hide laptop (≤768px) */
+@media (max-width: 768px) {
+  /* Hide laptop device */
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop {
+    display: none !important;
+  }
+
+  /* Keep the phone centered and within the flow */
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 420px !important;
+    width: 100% !important;
+    z-index: 1 !important;
+  }
+
+  /* Make the preview area a vertical stack with spacing */
+  .portfolio-preview,
+  .device-mockup-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+  }
+
+  /* Ensure badges sit below the mockup and don’t overlap */
+  .feature-badges,
+  .badge-grid,
+  .metrics-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    z-index: 0 !important;
+  }
+}
+/* ===== Fix mobile overlap: mockup vs. heading/badges (≤768px) ===== */
+@media (max-width: 768px) {
+  /* Let the mockup wrapper size to its content and stop absolute offsets */
+  .portfolio-preview,
+  .device-mockup-group {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+    margin: 0 auto 24px !important;  /* bottom space so it doesn't touch text */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 20px !important;
+    z-index: 1 !important;
+  }
+
+  /* Phone device: no absolute / translate; keep it centered */
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 420px !important;
+    width: 100% !important;
+  }
+
+  /* Ensure the content below starts a new flow and doesn’t creep under the mockup */
+  .portfolio-content,
+  .project-copy,
+  .section-body,
+  .feature-badges,
+  .badge-grid,
+  .metrics-grid {
+    position: relative !important;
+    z-index: 0 !important;
+    margin-top: 12px !important;
+    clear: both !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Defensive: stop any negative margins from desktop styles */
+  .feature-badges > *,
+  .badge-grid > *,
+  .metrics-grid > * {
+    margin: 0 !important;
+  }
+}
+
+
+
+/* =========================================================
+   OFFLINE STUDIOS — PATCH (2025-11-08)
+   Append-only overrides to stabilize layout on mobile/CS pages.
+   ========================================================= */
+
+/* A) Hide decorative backplates/halos behind devices (all pages) */
+.mockup-backplate,
+.preview-backplate,
+.preview-bg,
+.device-backplate,
+.mockup-shadow,
+.device-shadow { display: none !important; }
+
+/* Ensure badge text always renders */
+.feature-badge .badge-title,
+.feature-badge strong,
+.feature-badge h4,
+.feature-badge .badge-text,
+.feature-badge p { display: block !important; visibility: visible !important; opacity: 1 !important; }
+
+/* Narrow the 'nuke' to the known decorative node only */
+.portfolio-preview > .preview-backplate {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  display: none !important;
+}
+
+/* B) CONSOLIDATED MOBILE MOCKUP RULES (≤768px) */
+@media (max-width: 768px) {
+  /* One-column layout for the project slice */
+  .portfolio-grid, .portfolio-grid-reverse {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+  }
+
+  /* Content first, mockups second */
+  .portfolio-content { order: 1 !important; text-align: center !important; }
+  .portfolio-preview  { order: 2 !important; }
+
+  /* Phone only on mobile; hide laptop */
+  .device-mockup.laptop,
+  .device-laptop,
+  .device-mockup--laptop { display: none !important; }
+
+  .device-mockup.phone,
+  .device-phone,
+  .device-mockup--phone {
+    position: static !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 420px !important;
+    width: 100% !important;
+    z-index: 1 !important;
+  }
+
+  /* Center the preview stack and add breathing room */
+  .portfolio-preview,
+  .device-mockup-group {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+    margin: 0 auto 24px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure content below starts cleanly (no overlap) */
+  .portfolio-content,
+  .project-copy,
+  .section-body,
+  .feature-badges,
+  .badge-grid,
+  .metrics-grid {
+    position: relative !important;
+    z-index: 0 !important;
+    margin-top: 12px !important;
+    clear: both !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .feature-badges > *,
+  .badge-grid > *,
+  .metrics-grid > * { margin: 0 !important; }
+}
+
+/* C) CASE STUDY — CHALLENGES GRID NORMALIZATION */
+.case-study-section-simple .challenge-grid-simple {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
 }
 @media (max-width: 1024px) {
   .case-study-section-simple .challenge-grid-simple {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .case-study-section-simple .challenge-grid-simple {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+.case-study-section-simple .challenge-grid-simple > * {
+  grid-column: auto !important;
+  min-width: 0;
+  margin: 0 !important;
+}
+.challenge-card-simple {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(17,24,39,.08);
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 24px;
+  box-sizing: border-box;
+}
+.challenge-card-simple .icon { margin-bottom: 12px; line-height: 1; }
+.challenge-card-simple h3 { margin: 0 0 8px 0; }
+.challenge-card-simple p  { margin: 0; }
+
+/* D) CASE STUDY — CTA ON LIGHT BACKGROUND */
+.case-study-cta-simple { background: #f9fafb !important; padding: 80px 0; }
+.case-study-cta-simple .cta-content-simple {
+  max-width: 740px; margin: 0 auto; background: #fff;
+  border: 1px solid rgba(17,24,39,.08); border-radius: 16px;
+  padding: 40px 32px; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,.04);
+}
+.case-study-cta-simple h1,
+.case-study-cta-simple h2,
+.case-study-cta-simple h3,
+.case-study-cta-simple p,
+.case-study-cta-simple .cta-title,
+.case-study-cta-simple .cta-lead { color: #111827 !important; }
+.case-study-cta-simple .btn { background-color: #dc143c; color:#fff; border:0; }
+.case-study-cta-simple .btn:hover { background-color: #b30e30; }
+/* === Mobile fixes for "Our Work in Toronto" section === */
+@media (max-width: 768px) {
+  /* 1) Let the section flow naturally */
+  .home .work-hero,
+  .work-hero {
+    min-height: auto !important;     /* kill desktop min-heights */
+    height: auto !important;
+    padding-top: 32px;
+    padding-bottom: 40px;
+    overflow: visible !important;
+    position: relative;
+  }
+
+  /* 2) Headline + subhead spacing */
   .work-hero .section-title {
     margin-bottom: 12px !important;
   }
@@ -1824,9 +2188,55 @@ section {
   }
 
   /* 3) Stats/cards: stack to a single column and remove negative pulls */
-  .work-hero .backplate,
+  .work-hero .stats-row,
+  .work-hero .cards-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+    position: relative;
+    z-index: 2; /* above any decorative BG */
+  }
+  /* If you had a desktop "pull up" effect */
+  .work-hero .stats-row,
+  .work-hero .cards-row,
+  .work-hero .stats-row > *,
+  .work-hero .cards-row > * {
+    margin-top: 0 !important;
+  }
 
-/* MOBILE FIX: Extra small devices - single column features */
+  /* 4) Phone/device mockup: put it back into flow and center it */
+  .work-hero .device-mockup,
+  .work-hero .phone-mockup,
+  .work-hero .mockup,
+  .work-hero figure.device {
+    position: static !important;      /* no absolute anchoring on mobile */
+    inset: auto !important;
+    transform: none !important;
+    width: min(82vw, 340px) !important;
+    margin: 24px auto 0 !important;   /* center under cards */
+    z-index: 1;
+  }
+  .work-hero .device-mockup img,
+  .work-hero .phone-mockup img,
+  .work-hero .mockup img,
+  .work-hero figure.device img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 5) Kill any decorative “halo/backplate” that intrudes on text */
+  .work-hero .decor,
+  .work-hero .backplate,
+  .work-hero .glow,
+  .work-hero .orb {
+    display: none !important;
+  }
+}
+
+/* MOBILE FIX: Extra small devices */
 @media (max-width: 420px) {
     .portfolio-features {
         grid-template-columns: 1fr;
