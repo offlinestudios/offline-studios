@@ -2164,3 +2164,72 @@ html, body { min-width: 0 !important; }
 .case-study-cta-simple .cta-lead { color: #111827 !important; }
 .case-study-cta-simple .btn { background-color: #dc143c; color:#fff; border:0; }
 .case-study-cta-simple .btn:hover { background-color: #b30e30; }
+/* === Mobile fixes for "Our Work in Toronto" section === */
+@media (max-width: 768px) {
+  /* 1) Let the section flow naturally */
+  .home .work-hero,
+  .work-hero {
+    min-height: auto !important;     /* kill desktop min-heights */
+    height: auto !important;
+    padding-top: 32px;
+    padding-bottom: 40px;
+    overflow: visible !important;
+    position: relative;
+  }
+
+  /* 2) Headline + subhead spacing */
+  .work-hero .section-title {
+    margin-bottom: 12px !important;
+  }
+  .work-hero .section-subtitle {
+    margin-bottom: 20px !important;
+  }
+
+  /* 3) Stats/cards: stack to a single column and remove negative pulls */
+  .work-hero .stats-row,
+  .work-hero .cards-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+    position: relative;
+    z-index: 2; /* above any decorative BG */
+  }
+  /* If you had a desktop "pull up" effect */
+  .work-hero .stats-row,
+  .work-hero .cards-row,
+  .work-hero .stats-row > *,
+  .work-hero .cards-row > * {
+    margin-top: 0 !important;
+  }
+
+  /* 4) Phone/device mockup: put it back into flow and center it */
+  .work-hero .device-mockup,
+  .work-hero .phone-mockup,
+  .work-hero .mockup,
+  .work-hero figure.device {
+    position: static !important;      /* no absolute anchoring on mobile */
+    inset: auto !important;
+    transform: none !important;
+    width: min(82vw, 340px) !important;
+    margin: 24px auto 0 !important;   /* center under cards */
+    z-index: 1;
+  }
+  .work-hero .device-mockup img,
+  .work-hero .phone-mockup img,
+  .work-hero .mockup img,
+  .work-hero figure.device img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* 5) Kill any decorative “halo/backplate” that intrudes on text */
+  .work-hero .decor,
+  .work-hero .backplate,
+  .work-hero .glow,
+  .work-hero .orb {
+    display: none !important;
+  }
+}
