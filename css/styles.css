@@ -1089,6 +1089,7 @@ section {
         flex-direction: column;
         gap: var(--spacing-md);
         order: 1;
+        width: 100%;
     }
     
     .portfolio-title {
@@ -1154,6 +1155,7 @@ section {
         order: 2;
         overflow: visible;
         padding: var(--spacing-md) 0;
+        width: 100%;
     }
     
     /* MOBILE: Phone mockup centered below cards */
