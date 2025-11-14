@@ -1160,6 +1160,37 @@ section {
         order: 3; /* CTA goes last (though hidden) */
     }
     
+    /* Mobile mockup layout - stack laptop and phone vertically */
+    .device-mockup {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Reset laptop positioning for vertical stack */
+    .device-laptop {
+        position: relative; /* Change from absolute */
+        right: auto;
+        top: auto;
+        width: 100%; /* Full width instead of 70% */
+        max-width: 420px; /* Limit max size */
+        transform: none; /* Remove desktop offset */
+    }
+    
+    /* Reset phone positioning for vertical stack */
+    .device-phone {
+        position: relative;
+        width: 70%; /* Smaller than laptop */
+        max-width: 280px;
+        transform: none; /* Remove desktop overlap */
+    }
+    
+    /* Disable hover effects on mobile */
+    .device-mockup:hover .device-laptop,
+    .device-mockup:hover .device-phone {
+        transform: none;
+    }
+    
     /* Hero visual height set above at line ~906 (520px) - removed duplicate */
     
     /* Show floating badges on mobile with scaling */
