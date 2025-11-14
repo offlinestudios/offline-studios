@@ -941,7 +941,7 @@ section {
   /* Force text first, preview second for ALL portfolio items on mobile */
   .portfolio-grid, .portfolio-grid-reverse { 
     grid-template-columns: 1fr; 
-    gap: var(--spacing-lg); 
+    gap: var(--spacing-sm); /* Reduced from --spacing-lg for tighter mobile layout */
   }
   
     .portfolio-grid .portfolio-content,
@@ -1110,40 +1110,43 @@ section {
     }
     
     .portfolio-features li {
-        background: #F3F4F6;
-        border: 1px solid #D1D5DB;
+        background: #FFFFFF; /* Changed from gray to white for better contrast */
+        border: 2px solid #E5E7EB; /* Stronger border */
         border-radius: 0.75rem;
         padding: var(--spacing-md);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Stronger shadow */
     }
     
     .feature-label {
-        font-size: 0.875rem;
+        font-size: 1rem; /* Increased from 0.875rem */
         font-weight: 800;
         color: var(--color-primary);
         display: block;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.5rem; /* Increased spacing */
     }
     
     .feature-value {
-        font-size: 0.75rem;
+        font-size: 0.875rem; /* Increased from 0.75rem */
         color: var(--color-text-muted);
-        line-height: 1.3;
+        line-height: 1.4;
     }
     
     .portfolio-preview {
         grid-area: mockups;
-        height: 240px;
-        margin: 0;
+        height: auto; /* Changed from fixed 240px */
+        min-height: 320px; /* Minimum height for mockups */
+        margin: var(--spacing-md) 0; /* Reduced margin */
         display: flex;
         justify-content: center;
+        align-items: center;
     }
     
-    /* Smaller device mockups on mobile - centered */
+    /* Larger device mockups on mobile - centered and visible */
     .device-mockup {
-        height: 240px;
-        transform: scale(0.85);
-        transform-origin: center top;
+        height: auto;
+        max-width: 90%; /* Responsive width */
+        transform: scale(1.1); /* Increased from 0.85 to make mockups larger */
+        transform-origin: center center;
     }
     
     .portfolio-cta {
@@ -1672,106 +1675,12 @@ section {
   gap: 24px;
   align-items: stretch;
 }
-@media (max-width: 1024px) {
-  .case-study-section-simple .challenge-grid-simple {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-}
-@media (max-width: 640px) {
-  .case-study-section-simple .challenge-grid-simple {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-/* Kill any old "span two columns" or custom spans */
-.case-study-section-simple .challenge-grid-simple > * {
-  grid-column: auto !important;
-}
-
-/* Make each card consistent */
-.challenge-grid-simple > .challenge-card-simple { width: 100%; }
-.challenge-card-simple {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: #fff;
-  border: 1px solid rgba(17,24,39,0.08);
-  border-radius: 16px;
-  box-shadow: none;
-  padding: 24px;
-  box-sizing: border-box;
-}
-.challenge-card-simple .icon { margin-bottom: 12px; line-height: 1; }
-.challenge-card-simple h3 { margin: 0 0 8px 0; }
-.challenge-card-simple p { margin: 0; }
-
-/* --- Hero band: keep the top section same tone, no divider line --- */
-.case-study-hero-simple {
-  background: #f9fafb !important;
-  border-bottom: 0 !important;
-}
-/* Normalize the Challenges grid */
-.case-study-section-simple .challenge-grid-simple{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:24px;
-  align-items:start;
-}
-@media (max-width:1024px){
-  .case-study-section-simple .challenge-grid-simple{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:20px;
-  }
-}
-@media (max-width:640px){
-  .case-study-section-simple .challenge-grid-simple{
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-}
-
-/* Kill any “wide” spans left by older styles */
-.case-study-section-simple .challenge-grid-simple > *{
-  grid-column:auto !important;
-  min-width:0;           /* prevent overflow forcing a wrap */
-  margin:0 !important;   /* remove stray margins that can break the grid */
-}
-
-/* If you have any named wide class, neutralize it */
-.challenge-card--wide,
-.challenge-card-simple.wide{
-  grid-column:auto !important;
-}
-
-/* Make each card consistent */
-.challenge-card-simple{
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  background:#fff;
-  border:1px solid rgba(17,24,39,.08);
-  border-radius:16px;
-  box-shadow:none;
-  padding:24px;
-  box-sizing:border-box;
-}
-.challenge-card-simple .icon{margin-bottom:12px;line-height:1;}
-.challenge-card-simple h3{margin:0 0 8px 0;}
-.challenge-card-simple p{margin:0;}
-/* ===== Mobile fixes for the portfolio/project slice (≤768px) ===== */
-
-/* Safety: prevent any min-width from locking desktop layout on small screens */
-html, body { min-width: 0 !important; }
-/* ===== Mobile mockup positioning fix (≤768px) ===== */
-
-/* Optional: on very small screens you can hide the laptop entirely */
 @media (max-width: 420px) {
-  .device-mockup.laptop,
-  .device-laptop,
-  .device-mockup--laptop { display: none !important; }
+  /* Laptop and phone both visible on all screen sizes */
+  /* Feature cards stack vertically on extra small screens */
+  .portfolio-features {
+    grid-template-columns: 1fr !important;
+  }
 }
 /* Mobile-only mockup: show phone, hide laptop (≤768px) */
 /* ===== Fix mobile overlap: mockup vs. heading/badges (≤768px) ===== */
@@ -1815,51 +1724,3 @@ html, body { min-width: 0 !important; }
   gap: 24px;
   align-items: start;
 }
-@media (max-width: 1024px) {
-  .case-study-section-simple .challenge-grid-simple {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-}
-@media (max-width: 640px) {
-  .case-study-section-simple .challenge-grid-simple {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-.case-study-section-simple .challenge-grid-simple > * {
-  grid-column: auto !important;
-  min-width: 0;
-  margin: 0 !important;
-}
-.challenge-card-simple {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 1px solid rgba(17,24,39,.08);
-  border-radius: 16px;
-  box-shadow: none;
-  padding: 24px;
-  box-sizing: border-box;
-}
-.challenge-card-simple .icon { margin-bottom: 12px; line-height: 1; }
-.challenge-card-simple h3 { margin: 0 0 8px 0; }
-.challenge-card-simple p  { margin: 0; }
-
-/* D) CASE STUDY — CTA ON LIGHT BACKGROUND */
-.case-study-cta-simple { background: #f9fafb !important; padding: 80px 0; }
-.case-study-cta-simple .cta-content-simple {
-  max-width: 740px; margin: 0 auto; background: #fff;
-  border: 1px solid rgba(17,24,39,.08); border-radius: 16px;
-  padding: 40px 32px; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,.04);
-}
-.case-study-cta-simple h1,
-.case-study-cta-simple h2,
-.case-study-cta-simple h3,
-.case-study-cta-simple p,
-.case-study-cta-simple .cta-title,
-.case-study-cta-simple .cta-lead { color: #111827 !important; }
-.case-study-cta-simple .btn { background-color: #dc143c; color:#fff; border:0; }
-.case-study-cta-simple .btn:hover { background-color: #b30e30; }
-/* === Mobile fixes for "Our Work in Toronto" section === */
