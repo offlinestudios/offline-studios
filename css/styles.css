@@ -938,17 +938,7 @@ section {
 }
 
 @media (max-width: 768px) {
-  /* Force text first, preview second for ALL portfolio items on mobile */
-  .portfolio-grid, .portfolio-grid-reverse { 
-    grid-template-columns: 1fr; 
-    gap: var(--spacing-sm); /* Reduced from --spacing-lg for tighter mobile layout */
-  }
-  
-    .portfolio-grid .portfolio-content,
-  .portfolio-grid-reverse .portfolio-content { order: 1 !important; }
-  
-  .portfolio-grid .portfolio-preview,
-  .portfolio-grid-reverse .portfolio-preview { order: 2 !important; }
+  /* Portfolio ordering handled in mobile section below (line ~1158) */
 
   
   /* Show floating badges on mobile - disable animation to prevent transform conflict */
@@ -1074,39 +1064,34 @@ section {
     
     /* Mobile portfolio improvements - V7.5 with Grid Areas */
     
-    /* Use CSS Grid with template areas for clean mobile layout */
-    .portfolio-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "title"
-            "description"
-            "stats"
-            "mockups"
-            "button";
-        gap: var(--spacing-md);
+    /* Mobile portfolio layout - flexible approach with proper spacing */
+    .portfolio-grid,
+    .portfolio-grid-reverse {
+        display: flex;
+        flex-direction: column;
+        gap: 0; /* Remove uniform gap, use individual margins instead */
     }
     
-    /* Assign grid areas to each element */
+    /* FIX #1: Add breathing room between title and description */
     .portfolio-title {
-        grid-area: title;
         font-size: 1.5rem;
         text-align: center;
+        margin-bottom: 1rem; /* Breathing room after title */
     }
     
     .portfolio-description {
-        grid-area: description;
         font-size: 1rem;
         line-height: 1.5;
         text-align: center;
+        margin-bottom: 1.5rem; /* More space before feature cards */
     }
     
+    /* FIX #2: Stack feature cards vertically (single column) */
     .portfolio-features {
-        grid-area: stats;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-sm);
-        margin: 0;
+        grid-template-columns: 1fr; /* Single column instead of 1fr 1fr */
+        gap: var(--spacing-md); /* Larger gap between stacked cards */
+        margin: 0 0 var(--spacing-lg) 0; /* Space after feature cards */
     }
     
     .portfolio-features li {
@@ -1131,26 +1116,26 @@ section {
         line-height: 1.4;
     }
     
+    /* FIX #4: Mockup alignment with feature cards */
     .portfolio-preview {
-        grid-area: mockups;
-        height: auto; /* Changed from fixed 240px */
-        min-height: 320px; /* Minimum height for mockups */
-        margin: var(--spacing-md) 0; /* Reduced margin */
+        height: auto;
+        min-height: 320px;
+        margin: var(--spacing-lg) 0; /* More vertical space */
+        padding: 0 var(--spacing-md); /* Horizontal padding to match feature cards */
         display: flex;
-        justify-content: center;
         align-items: center;
+        /* Removed justify-content: center to align naturally */
     }
     
-    /* Larger device mockups on mobile - centered and visible */
+    /* Larger device mockups on mobile - aligned with feature cards */
     .device-mockup {
         height: auto;
-        max-width: 90%; /* Responsive width */
+        max-width: 100%; /* Full width within padded container */
         transform: scale(1.1); /* Increased from 0.85 to make mockups larger */
         transform-origin: center center;
     }
     
     .portfolio-cta {
-        grid-area: button;
         margin: 0;
         display: none; /* Hidden - using hover overlay instead */
         justify-content: center;
@@ -1160,27 +1145,19 @@ section {
         margin: 0 auto;
     }
     
-    /* MOBILE FIX: Force vertical stacking */
-    .portfolio-grid,
-    .portfolio-grid-reverse {
-        display: block !important;
+    /* FIX #3: Proper ordering for reverse items */
+    /* Normal items (.portfolio-grid): content already first in HTML, no changes needed */
+    /* Reverse items (.portfolio-grid-reverse): reorder so content comes before mockup */
+    .portfolio-grid-reverse .portfolio-preview {
+        order: 2; /* Mockup goes last */
     }
     
-    .portfolio-content {
-        display: block !important;
-        width: 100% !important;
-        margin-bottom: var(--spacing-md) !important;
+    .portfolio-grid-reverse .portfolio-content {
+        order: 1; /* Content goes first */
     }
     
-    .portfolio-preview {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-        margin: var(--spacing-md) 0 !important;
-    }
-    
-    .portfolio-cta {
-        display: none !important;
+    .portfolio-grid-reverse .portfolio-cta {
+        order: 3; /* CTA goes last (though hidden) */
     }
     
     /* Hero visual height set above at line ~906 (520px) - removed duplicate */
