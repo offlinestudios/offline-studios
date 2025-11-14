@@ -1160,35 +1160,22 @@ section {
         order: 3; /* CTA goes last (though hidden) */
     }
     
-    /* Mobile mockup layout - stack laptop and phone vertically */
+    /* Mobile mockup layout - scale down desktop layout to fit mobile */
     .device-mockup {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-lg);
+        width: 100%;           /* Responsive width */
+        max-width: 380px;      /* Fit mobile screens (was 480px desktop) */
+        height: auto;          /* Auto height */
+        transform: scale(0.85); /* Scale down entire group by 15% */
+        transform-origin: center center;
     }
     
-    /* Reset laptop positioning for vertical stack */
-    .device-laptop {
-        position: relative; /* Change from absolute */
-        right: auto;
-        top: auto;
-        width: 100%; /* Full width instead of 70% */
-        max-width: 420px; /* Limit max size */
-        transform: none; /* Remove desktop offset */
+    /* Disable hover scale on mobile (keep positioning offset) */
+    .device-mockup:hover .device-laptop {
+        transform: translate(16px, 16px); /* Keep offset, no scale */
     }
     
-    /* Reset phone positioning for vertical stack */
-    .device-phone {
-        position: relative;
-        width: 70%; /* Smaller than laptop */
-        max-width: 280px;
-        transform: none; /* Remove desktop overlap */
-    }
-    
-    /* Disable hover effects on mobile */
-    .device-mockup:hover .device-laptop,
     .device-mockup:hover .device-phone {
-        transform: none;
+        transform: translateX(-64px); /* Keep overlap, no scale */
     }
     
     /* Hero visual height set above at line ~906 (520px) - removed duplicate */
