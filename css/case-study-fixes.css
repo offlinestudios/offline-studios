@@ -73,3 +73,29 @@
 }
 .case-study-cta-simple .btn { background-color: #dc143c; color: #ffffff; border: 0; }
 .case-study-cta-simple .btn:hover { background-color: #b30e30; }
+
+/* 4) TAKEAWAYS & METRICS: mobile-friendly grid layouts */
+
+/* Takeaways: stack vertically on mobile */
+@media (max-width: 768px) {
+  .takeaways-grid-simple {
+    grid-template-columns: 1fr !important;
+    gap: var(--spacing-md) !important;
+  }
+  
+  .takeaway-card-simple {
+    padding: var(--spacing-md) !important;
+  }
+}
+
+/* Metrics: 2×2 grid on mobile */
+@media (max-width: 768px) {
+  .metrics-grid-simple {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--spacing-md) !important;
+  }
+  
+  .metric-card-simple {
+    padding: var(--spacing-md) !important;
+  }
+}
