@@ -1160,12 +1160,12 @@ section {
         order: 3; /* CTA goes last (though hidden) */
     }
     
-    /* Mobile mockup layout - scale down desktop layout to fit mobile */
+    /* Mobile mockup layout - desktop layout at natural size */
     .device-mockup {
         width: 100%;           /* Responsive width */
-        max-width: 380px;      /* Fit mobile screens (was 480px desktop) */
+        max-width: 450px;      /* Increased from 380px for better visibility (was 480px desktop) */
         height: auto;          /* Auto height */
-        transform: scale(0.85); /* Scale down entire group by 15% */
+        transform: scale(1);   /* Natural size, no scaling (was 0.85) */
         transform-origin: center center;
     }
     
