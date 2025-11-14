@@ -1062,6 +1062,22 @@ section {
         gap: var(--spacing-xl);
     }
     
+    /* Case study page mobile fixes */
+    .takeaways-grid-simple {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: var(--spacing-md);
+    }
+    
+    .metrics-grid-simple {
+        grid-template-columns: repeat(2, 1fr); /* 2×2 grid */
+        gap: var(--spacing-md);
+    }
+    
+    .takeaway-card-simple,
+    .metric-card-simple {
+        padding: var(--spacing-md); /* Reduce padding on mobile */
+    }
+    
     /* Mobile portfolio improvements - V7.5 with Grid Areas */
     
     /* Mobile portfolio layout - flexible approach with proper spacing */
