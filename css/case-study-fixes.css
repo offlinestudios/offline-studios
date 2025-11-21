@@ -14,6 +14,14 @@
   padding-bottom: 64px;
 }
 
+/* Mobile: reduce hero padding */
+@media (max-width: 768px) {
+  .case-study-hero-simple {
+    padding-top: 92px !important;  /* Reduced from 120px */
+    padding-bottom: 32px !important;  /* Reduced from 64px */
+  }
+}
+
 /* 2) CHALLENGES: fix grid + card alignment */
 .case-study-section-simple .challenge-grid-simple {
   display: grid;
@@ -61,6 +69,13 @@
   color: #111827;
   padding: 80px 0;
 }
+
+/* Mobile: reduce CTA padding */
+@media (max-width: 768px) {
+  .case-study-cta-simple {
+    padding: 48px 0 !important;  /* Reduced from 80px */
+  }
+}
 .case-study-cta-simple .cta-content-simple {
   max-width: 740px;
   margin: 0 auto;
@@ -98,4 +113,35 @@
   .metric-card-simple {
     padding: var(--spacing-md) !important;
   }
+}
+
+/* 5) SECTION SPACING: reduce on mobile */
+@media (max-width: 768px) {
+  .case-study-section-simple {
+    padding: 32px 0 !important;  /* Reduced from default */
+  }
+}
+
+/* 6) BULLET POINTS: add to Next Steps and all lists */
+.next-steps-list-simple {
+  list-style: disc !important;
+  list-style-position: outside !important;
+  padding-left: 64px !important;  /* Space for bullets */
+}
+
+.next-steps-list-simple li {
+  list-style: disc !important;
+  display: list-item !important;
+  margin-bottom: 16px !important;
+}
+
+.case-study-container-simple ul,
+.case-study-container-simple ol {
+  list-style: disc !important;
+  list-style-position: outside !important;
+}
+
+.case-study-container-simple li {
+  list-style: disc !important;
+  display: list-item !important;
 }
