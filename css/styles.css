@@ -940,6 +940,18 @@ section {
 @media (max-width: 768px) {
   /* Portfolio ordering handled in mobile section below (line ~1158) */
 
+  /* MOBILE SPACING FIXES - Reduce desktop spacing values for mobile */
+  section {
+    padding: var(--spacing-lg) 0; /* Reduced from 6rem to 2rem (96px to 32px) */
+  }
+  
+  .section-header {
+    margin-bottom: var(--spacing-lg); /* Reduced from 6rem to 2rem (96px to 32px) */
+  }
+  
+  .portfolio-item {
+    margin-bottom: var(--spacing-xl); /* Reduced from 6rem to 3rem (96px to 48px) */
+  }
   
   /* Show floating badges on mobile - disable animation to prevent transform conflict */
   .stat-badge { 
@@ -965,9 +977,10 @@ section {
     left: 6% !important; 
   }
   
-  /* Increase hero height on mobile for badge spacing */
+  /* Use min-height instead of fixed height to prevent empty space */
   .hero-visual {
-    height: 520px; /* Increased from 400px to prevent badge collision */
+    min-height: 400px;
+    height: auto;
   }
   
   /* Ensure all containers fit mobile screen */
@@ -1030,7 +1043,7 @@ section {
     }
     
     .hero {
-        padding: calc(var(--spacing-2xl) + 60px) 0 var(--spacing-lg);
+        padding: calc(var(--spacing-lg) + 60px) 0 var(--spacing-md); /* Reduced top padding */
     }
     
     .hero-title {
@@ -1085,7 +1098,7 @@ section {
     .portfolio-grid-reverse {
         display: flex;
         flex-direction: column;
-        gap: 0; /* Remove uniform gap, use individual margins instead */
+        gap: var(--spacing-md); /* Use consistent gap instead of 0 */
     }
     
     /* FIX #1: Add breathing room between title and description */
@@ -1107,7 +1120,7 @@ section {
         display: grid;
         grid-template-columns: 1fr; /* Single column instead of 1fr 1fr */
         gap: var(--spacing-md); /* Larger gap between stacked cards */
-        margin: 0 0 var(--spacing-lg) 0; /* Space after feature cards */
+        margin: 0 0 var(--spacing-sm) 0; /* Reduced from lg to sm (32px to 16px) */
     }
     
     .portfolio-features li {
@@ -1136,20 +1149,14 @@ section {
     .portfolio-preview {
         height: auto;
         min-height: 320px;
-        margin: var(--spacing-lg) 0; /* More vertical space */
+        margin: var(--spacing-sm) 0; /* Reduced from lg to sm (32px to 16px) */
         padding: 0 var(--spacing-md); /* Horizontal padding to match feature cards */
         display: flex;
         align-items: center;
         /* Removed justify-content: center to align naturally */
     }
     
-    /* Larger device mockups on mobile - aligned with feature cards */
-    .device-mockup {
-        height: auto;
-        max-width: 100%; /* Full width within padded container */
-        transform: scale(1.1); /* Increased from 0.85 to make mockups larger */
-        transform-origin: center center;
-    }
+    /* Device mockup sizing handled below at line ~1193 */
     
     .portfolio-cta {
         margin: 0;
