@@ -1076,6 +1076,18 @@ section {
     }
     
     /* Case study page mobile fixes */
+    .case-study-section-simple {
+        padding: var(--spacing-lg) 0; /* Reduce from 48px to 32px */
+    }
+    
+    .case-study-hero-simple {
+        padding: var(--spacing-lg) 0 var(--spacing-md) 0; /* Reduce padding */
+    }
+    
+    .case-study-cta-simple {
+        padding: var(--spacing-xl) 0; /* Reduce from 64px to 48px */
+    }
+    
     .takeaways-grid-simple {
         grid-template-columns: 1fr; /* Stack vertically */
         gap: var(--spacing-md);
@@ -1089,6 +1101,11 @@ section {
     .takeaway-card-simple,
     .metric-card-simple {
         padding: var(--spacing-md); /* Reduce padding on mobile */
+    }
+    
+    .challenge-grid-simple {
+        grid-template-columns: 1fr; /* Stack vertically on mobile */
+        gap: var(--spacing-md);
     }
     
     /* Mobile portfolio improvements - V7.5 with Grid Areas */
@@ -1350,6 +1367,8 @@ section {
 .case-study-container-simple ol {
     margin: var(--spacing-sm) 0;
     padding-left: var(--spacing-xl);
+    list-style: disc;
+    list-style-position: outside;
 }
 
 .case-study-container-simple li {
@@ -1357,6 +1376,8 @@ section {
     line-height: 1.7;
     color: var(--color-text);
     margin-bottom: var(--spacing-xs);
+    list-style: disc;
+    display: list-item;
 }
 
 /* Challenge Cards - No emojis */
@@ -1517,6 +1538,15 @@ section {
     padding: var(--spacing-lg);
     border-radius: 0.75rem;
     border: 1px solid var(--color-border);
+    list-style: disc;
+    list-style-position: outside;
+    padding-left: calc(var(--spacing-xl) + var(--spacing-lg)); /* Add left padding for bullets */
+}
+
+.next-steps-list-simple li {
+    list-style: disc;
+    display: list-item;
+    margin-bottom: var(--spacing-sm);
 }
 
 /* Conclusion */
