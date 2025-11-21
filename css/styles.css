@@ -111,6 +111,17 @@ ul {
     width: auto;
 }
 
+.logo-link {
+    display: inline-block;
+    text-decoration: none;
+    transition: opacity var(--transition-base);
+    cursor: pointer;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
+
 .nav-menu {
     display: flex;
     gap: var(--spacing-lg);
