@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#030408">
+  <meta name="description" content="Offline Studios. An independent transmission.">
+  <link rel="canonical" href="https://www.offlinestudios.ca/">
+  <title>Offline Studios — Desktop wallpaper</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="./landing/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./landing/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Offline Studios">
+  <meta property="og:title" content="Offline Studios — Independent transmission">
+  <meta property="og:description" content="Offline Studios. An independent transmission.">
+  <meta property="og:url" content="https://www.offlinestudios.ca/">
+  <meta property="og:image" content="https://www.offlinestudios.ca/landing/offline-studios-share.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Offline Studios logo in 3D over blue CRT static with a red glow.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Offline Studios — Independent transmission">
+  <meta name="twitter:description" content="Offline Studios. An independent transmission.">
+  <meta name="twitter:image" content="https://www.offlinestudios.ca/landing/offline-studios-share.jpg">
+  <meta name="twitter:image:alt" content="The Offline Studios logo in 3D over blue CRT static with a red glow.">
+<style>
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#030408}
+.television{width:100vw;height:100vh;min-height:0}
+.cabinet,.screen-surround{position:absolute;inset:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.crt-glass{border-radius:0;box-shadow:none}
+.cabinet:before,.crt-glass:after,.hardware,.console,.antenna,.screw,.osd,.loading{display:none!important}
+#scene{cursor:default;pointer-events:none}
+.fallback{background:#030408 url('./landing/offline-studios-share.jpg') center/cover no-repeat}
+.fallback img{display:none}
+</style>
+</head>
+<body>
+  <main class="television" aria-label="Offline Studios interactive CRT television">
+    <div class="antenna antenna-left" aria-hidden="true"></div><div class="antenna antenna-right" aria-hidden="true"></div>
+    <div class="cabinet">
+      <span class="screw screw-tl" aria-hidden="true"></span><span class="screw screw-tr" aria-hidden="true"></span><span class="screw screw-bl" aria-hidden="true"></span><span class="screw screw-br" aria-hidden="true"></span>
+      <div class="screen-surround">
+        <div class="crt-glass" id="glass">
+          <div id="scene" role="img" aria-label="The original Offline Studios logo floats in three dimensions inside a full-screen 1980s CRT display, with blue static, scan lines, and red neon reflections."></div>
+          <div class="fallback" id="fallback" hidden><img src="./images/offline-logo.png" alt="Offline Studios"></div>
+          <div class="glass-reflection" aria-hidden="true"></div>
+          <div class="osd osd-top" aria-hidden="true"><span>AV—<span id="osd-channel">01</span></span><span class="stereo">STEREO</span></div>
+          <div class="osd osd-bottom" aria-hidden="true"><span id="hint">DRAG TO ROTATE</span><span class="transmission">INDEPENDENT TRANSMISSION</span></div>
+          <div class="loading" id="loading" aria-hidden="true"><span></span>ACQUIRING SIGNAL</div>
+        </div>
+      </div>
+      <aside class="hardware" aria-label="Television dials">
+        <div class="frequency"><span class="hardware-label">UHF / VHF</span><span class="channel-id" id="channel-id" aria-hidden="true">01</span><span class="hardware-label channel-caption">CHANNEL</span></div>
+        <div class="dial-control"><button id="tune" class="dial tuning-dial" type="button" aria-label="Change channel" title="Change the logo animation"><span class="dial-face"><i></i></span></button><span class="hardware-label">TUNING</span></div>
+        <div class="dial-control"><button id="power" class="dial power-dial" type="button" aria-label="Turn television off" aria-pressed="true" title="Turn television off"><span class="dial-face"><i></i></span></button><span class="hardware-label">POWER</span></div>
+        <div class="side-vents" aria-hidden="true"></div>
+        <span class="model-number" aria-hidden="true">OS–1982<br>SOLID STATE</span>
+      </aside>
+      <footer class="console">
+        <div class="lower-vents" aria-hidden="true"></div>
+        <div class="signal"><span class="signal-dot" id="signal-dot"></span><span id="signal-label">ON AIR</span></div>
+        <div class="controls" aria-label="Playback controls">
+          <button id="motion" type="button" aria-label="Pause animation" aria-pressed="false" title="Pause animation"><svg id="motion-icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M6 4v10M12 4v10"/></svg><span id="motion-label">HOLD</span></button>
+          <button id="sound" type="button" aria-label="Enable television sound" aria-pressed="false" title="Enable television sound"><svg id="sound-icon" viewBox="0 0 18 18" aria-hidden="true"><path d="M8 3 4 6H2v6h2l4 3zM12 7l4 4M16 7l-4 4"/></svg><span id="sound-label">SOUND OFF</span></button>
+        </div>
+      </footer>
+    </div>
+    <p id="status" class="sr-only" role="status" aria-live="polite">Channel 1. Floating logo.</p>
+  </main>
+  <script type="module" src="./landing/wallpaper.js"></script>
+</body>
+</html>
